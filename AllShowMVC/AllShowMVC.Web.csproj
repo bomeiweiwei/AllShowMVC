@@ -175,6 +175,20 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AllShowMVC.Common\AllShowMVC.Common.csproj">
+      <Project>{5a09f280-ef42-4eb3-984b-c75aaa3393b4}</Project>
+      <Name>AllShowMVC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllShowMVC.Models\AllShowMVC.Models.csproj">
+      <Project>{2bf04eb2-2e22-4230-8b5a-443991439b7c}</Project>
+      <Name>AllShowMVC.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllShowMVC.Service\AllShowMVC.Service.csproj">
+      <Project>{f5c0fb37-0f3e-4e66-88ba-e09aa59b1376}</Project>
+      <Name>AllShowMVC.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

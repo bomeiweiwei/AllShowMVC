@@ -1,0 +1,1190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AllShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="AdNo" />
+          </Key>
+          <Property Name="AdNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShNo" Type="int" />
+          <Property Name="EmpNo" Type="int" />
+          <Property Name="AdTitle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AdApplyDate" Type="date" Nullable="false" />
+          <Property Name="AdStartDate" Type="date" Nullable="false" />
+          <Property Name="AdTime" Type="date" Nullable="false" />
+          <Property Name="AdPrice" Type="int" Nullable="false" />
+          <Property Name="AdPic" Type="varchar" MaxLength="1000" />
+          <Property Name="AdURL" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AdCheckState" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnouncementNo" />
+          </Key>
+          <Property Name="AnnouncementNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpNo" Type="int" />
+          <Property Name="AnnouncementType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AnnouncementContent" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="CreateDate" Type="date" Nullable="false" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Authority">
+          <Key>
+            <PropertyRef Name="AuthorityNo" />
+            <PropertyRef Name="EmpNo" />
+          </Key>
+          <Property Name="AuthorityNo" Type="int" Nullable="false" />
+          <Property Name="EmpNo" Type="int" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="AuthorityFunction">
+          <Key>
+            <PropertyRef Name="AuthorityNo" />
+          </Key>
+          <Property Name="AuthorityNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthorityName" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpNo" />
+          </Key>
+          <Property Name="EmpNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmpAccount" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmpPwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmpEmail" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="EmpSex" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="EmpBirth" Type="date" Nullable="false" />
+          <Property Name="EmpTel" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HireDate" Type="date" Nullable="false" />
+          <Property Name="LeaveDate" Type="date" />
+          <Property Name="EmpAccountState" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="FavoriteShopList">
+          <Key>
+            <PropertyRef Name="MemNo" />
+            <PropertyRef Name="ShNo" />
+          </Key>
+          <Property Name="MemNo" Type="int" Nullable="false" />
+          <Property Name="ShNo" Type="int" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemNo" />
+          </Key>
+          <Property Name="MemNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemEmail" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="MemPwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MemDiminutive" Type="varchar" MaxLength="40" />
+          <Property Name="MemName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="MemSex" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="MemTel" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MemAddress" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="MemPic" Type="varchar" MaxLength="1000" />
+          <Property Name="MemAccountState" Type="varchar" MaxLength="1" />
+          <Property Name="MemCheckNumber" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="MemCreateDate" Type="date" Nullable="false" />
+          <Property Name="MemUudateDate" Type="date" />
+          <Property Name="MemBirth" Type="date" />
+        </EntityType>
+        <EntityType Name="MemberList">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemNo" Type="int" />
+          <Property Name="OrderDate" Type="date" />
+        </EntityType>
+        <EntityType Name="OrderList">
+          <Key>
+            <PropertyRef Name="ShoporderNo" />
+            <PropertyRef Name="ProNo" />
+          </Key>
+          <Property Name="ShoporderNo" Type="int" Nullable="false" />
+          <Property Name="ProNo" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProNo" />
+          </Key>
+          <Property Name="ProNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShNo" Type="int" />
+          <Property Name="ProClassNo" Type="int" />
+          <Property Name="ProName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProPrice" Type="int" Nullable="false" />
+          <Property Name="ProStatement" Type="varchar" MaxLength="200" />
+          <Property Name="ProState" Type="varchar" MaxLength="1" />
+          <Property Name="ProPic1" Type="varchar" MaxLength="1000" />
+          <Property Name="ProPic2" Type="varchar" MaxLength="1000" />
+          <Property Name="ProPic3" Type="varchar" MaxLength="1000" />
+          <Property Name="ProCreateDate" Type="date" />
+          <Property Name="ProUpdateDate" Type="date" />
+          <Property Name="ProOffshelfDate" Type="date" />
+          <Property Name="ProPop" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ProductClass">
+          <Key>
+            <PropertyRef Name="ProClassNo" />
+          </Key>
+          <Property Name="ProClassNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShNo" Type="int" />
+          <Property Name="ProClassName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShClass">
+          <Key>
+            <PropertyRef Name="ShClassNo" />
+          </Key>
+          <Property Name="ShClassNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShClassName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="ShNo" />
+          </Key>
+          <Property Name="ShNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpNo" Type="int" />
+          <Property Name="ShThePic" Type="varchar" MaxLength="1000" />
+          <Property Name="ShName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShClassNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ShAccount" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShPwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShBoss" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ShContact" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ShAddress" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ShTel" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ShEmail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ShAbout" Type="varchar" MaxLength="300" />
+          <Property Name="ShLogoPic" Type="varchar" MaxLength="1000" />
+          <Property Name="ShUrl" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShAdState" Type="varchar" MaxLength="1" />
+          <Property Name="ShAdTitle" Type="varchar" MaxLength="20" />
+          <Property Name="ShAdPic" Type="varchar" MaxLength="1000" />
+          <Property Name="ShPopShop" Type="varchar" MaxLength="1" />
+          <Property Name="ShCheckState" Type="varchar" MaxLength="1" />
+          <Property Name="ShStartDate" Type="date" />
+          <Property Name="ShEndDate" Type="date" />
+          <Property Name="ShCheckDate" Type="date" />
+          <Property Name="ShPwdState" Type="varchar" MaxLength="1" />
+          <Property Name="ShStopRightStartDate" Type="date" />
+          <Property Name="ShStopRightEnddate" Type="date" />
+        </EntityType>
+        <EntityType Name="ShopOrder">
+          <Key>
+            <PropertyRef Name="ShoporderNo" />
+          </Key>
+          <Property Name="ShoporderNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="ShNo" Type="int" />
+          <Property Name="OrderPrice" Type="int" Nullable="false" />
+          <Property Name="ReferredToDate" Type="date" />
+          <Property Name="TransactionDate" Type="date" />
+          <Property Name="OrderState" Type="varchar" MaxLength="1" />
+          <Property Name="RecipientName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RecipientTel" Type="varchar" MaxLength="10" />
+          <Property Name="RecipientAddress" Type="varchar" MaxLength="50" />
+          <Property Name="PayType" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK__Advertise__EmpNo__3D5E1FD2">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpNo" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Advertisem__ShNo__3E52440B">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Announcem__EmpNo__30F848ED">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Announcement" Type="Self.Announcement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpNo" />
+            </Principal>
+            <Dependent Role="Announcement">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Authority__Autho__2D27B809">
+          <End Role="AuthorityFunction" Type="Self.AuthorityFunction" Multiplicity="1" />
+          <End Role="Authority" Type="Self.Authority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuthorityFunction">
+              <PropertyRef Name="AuthorityNo" />
+            </Principal>
+            <Dependent Role="Authority">
+              <PropertyRef Name="AuthorityNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Authority__EmpNo__2E1BDC42">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Authority" Type="Self.Authority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpNo" />
+            </Principal>
+            <Dependent Role="Authority">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavoriteS__MemNo__4E88ABD4">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="FavoriteShopList" Type="Self.FavoriteShopList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemNo" />
+            </Principal>
+            <Dependent Role="FavoriteShopList">
+              <PropertyRef Name="MemNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavoriteSh__ShNo__4F7CD00D">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+          <End Role="FavoriteShopList" Type="Self.FavoriteShopList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="FavoriteShopList">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MemberLis__MemNo__52593CB8">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="MemberList" Type="Self.MemberList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemNo" />
+            </Principal>
+            <Dependent Role="MemberList">
+              <PropertyRef Name="MemNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderList__ProNo__5BE2A6F2">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderList" Type="Self.OrderList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProNo" />
+            </Principal>
+            <Dependent Role="OrderList">
+              <PropertyRef Name="ProNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderList__Shopo__5AEE82B9">
+          <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="1" />
+          <End Role="OrderList" Type="Self.OrderList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShopOrder">
+              <PropertyRef Name="ShoporderNo" />
+            </Principal>
+            <Dependent Role="OrderList">
+              <PropertyRef Name="ShoporderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__ProClas__47DBAE45">
+          <End Role="ProductClass" Type="Self.ProductClass" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductClass">
+              <PropertyRef Name="ProClassNo" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProClassNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__ShNo__46E78A0C">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductCla__ShNo__440B1D61">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="ProductClass" Type="Self.ProductClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="ProductClass">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shop__EmpNo__3A81B327">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpNo" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShopOrder__Order__5812160E">
+          <End Role="MemberList" Type="Self.MemberList" Multiplicity="0..1" />
+          <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberList">
+              <PropertyRef Name="OrderNo" />
+            </Principal>
+            <Dependent Role="ShopOrder">
+              <PropertyRef Name="OrderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShopOrder__ShNo__571DF1D5">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="ShopOrder">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AllShowModelStoreContainer">
+          <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authority" EntityType="Self.Authority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthorityFunction" EntityType="Self.AuthorityFunction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriteShopList" EntityType="Self.FavoriteShopList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberList" EntityType="Self.MemberList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderList" EntityType="Self.OrderList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductClass" EntityType="Self.ProductClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShClass" EntityType="Self.ShClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopOrder" EntityType="Self.ShopOrder" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Advertise__EmpNo__3D5E1FD2" Association="Self.FK__Advertise__EmpNo__3D5E1FD2">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Advertisem__ShNo__3E52440B" Association="Self.FK__Advertisem__ShNo__3E52440B">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Announcem__EmpNo__30F848ED" Association="Self.FK__Announcem__EmpNo__30F848ED">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Announcement" EntitySet="Announcement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Authority__Autho__2D27B809" Association="Self.FK__Authority__Autho__2D27B809">
+            <End Role="AuthorityFunction" EntitySet="AuthorityFunction" />
+            <End Role="Authority" EntitySet="Authority" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Authority__EmpNo__2E1BDC42" Association="Self.FK__Authority__EmpNo__2E1BDC42">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Authority" EntitySet="Authority" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavoriteS__MemNo__4E88ABD4" Association="Self.FK__FavoriteS__MemNo__4E88ABD4">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FavoriteShopList" EntitySet="FavoriteShopList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavoriteSh__ShNo__4F7CD00D" Association="Self.FK__FavoriteSh__ShNo__4F7CD00D">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="FavoriteShopList" EntitySet="FavoriteShopList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MemberLis__MemNo__52593CB8" Association="Self.FK__MemberLis__MemNo__52593CB8">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="MemberList" EntitySet="MemberList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderList__ProNo__5BE2A6F2" Association="Self.FK__OrderList__ProNo__5BE2A6F2">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderList" EntitySet="OrderList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderList__Shopo__5AEE82B9" Association="Self.FK__OrderList__Shopo__5AEE82B9">
+            <End Role="ShopOrder" EntitySet="ShopOrder" />
+            <End Role="OrderList" EntitySet="OrderList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__ProClas__47DBAE45" Association="Self.FK__Product__ProClas__47DBAE45">
+            <End Role="ProductClass" EntitySet="ProductClass" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__ShNo__46E78A0C" Association="Self.FK__Product__ShNo__46E78A0C">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductCla__ShNo__440B1D61" Association="Self.FK__ProductCla__ShNo__440B1D61">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="ProductClass" EntitySet="ProductClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shop__EmpNo__3A81B327" Association="Self.FK__Shop__EmpNo__3A81B327">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShopOrder__Order__5812160E" Association="Self.FK__ShopOrder__Order__5812160E">
+            <End Role="MemberList" EntitySet="MemberList" />
+            <End Role="ShopOrder" EntitySet="ShopOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShopOrder__ShNo__571DF1D5" Association="Self.FK__ShopOrder__ShNo__571DF1D5">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="ShopOrder" EntitySet="ShopOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AllShowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="AdNo" />
+          </Key>
+          <Property Name="AdNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShNo" Type="Int32" />
+          <Property Name="EmpNo" Type="Int32" />
+          <Property Name="AdTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdApplyDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AdStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AdTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AdPrice" Type="Int32" Nullable="false" />
+          <Property Name="AdPic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="AdURL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdCheckState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Advertise__EmpNo__3D5E1FD2" FromRole="Advertisement" ToRole="Employee" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK__Advertisem__ShNo__3E52440B" FromRole="Advertisement" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnouncementNo" />
+          </Key>
+          <Property Name="AnnouncementNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpNo" Type="Int32" />
+          <Property Name="AnnouncementType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AnnouncementContent" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Announcem__EmpNo__30F848ED" FromRole="Announcement" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Authority">
+          <Key>
+            <PropertyRef Name="AuthorityNo" />
+            <PropertyRef Name="EmpNo" />
+          </Key>
+          <Property Name="AuthorityNo" Type="Int32" Nullable="false" />
+          <Property Name="EmpNo" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AuthorityFunction" Relationship="Self.FK__Authority__Autho__2D27B809" FromRole="Authority" ToRole="AuthorityFunction" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Authority__EmpNo__2E1BDC42" FromRole="Authority" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="AuthorityFunction">
+          <Key>
+            <PropertyRef Name="AuthorityNo" />
+          </Key>
+          <Property Name="AuthorityNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorityName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Authority" Relationship="Self.FK__Authority__Autho__2D27B809" FromRole="AuthorityFunction" ToRole="Authority" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpNo" />
+          </Key>
+          <Property Name="EmpNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpSex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EmpTel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LeaveDate" Type="DateTime" Precision="0" />
+          <Property Name="EmpAccountState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertise__EmpNo__3D5E1FD2" FromRole="Employee" ToRole="Advertisement" />
+          <NavigationProperty Name="Announcement" Relationship="Self.FK__Announcem__EmpNo__30F848ED" FromRole="Employee" ToRole="Announcement" />
+          <NavigationProperty Name="Authority" Relationship="Self.FK__Authority__EmpNo__2E1BDC42" FromRole="Employee" ToRole="Authority" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK__Shop__EmpNo__3A81B327" FromRole="Employee" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="FavoriteShopList">
+          <Key>
+            <PropertyRef Name="MemNo" />
+            <PropertyRef Name="ShNo" />
+          </Key>
+          <Property Name="MemNo" Type="Int32" Nullable="false" />
+          <Property Name="ShNo" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__FavoriteS__MemNo__4E88ABD4" FromRole="FavoriteShopList" ToRole="Member" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK__FavoriteSh__ShNo__4F7CD00D" FromRole="FavoriteShopList" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemNo" />
+          </Key>
+          <Property Name="MemNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemDiminutive" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="MemName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemSex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemTel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemAddress" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemPic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MemAccountState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MemCheckNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemCreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MemUudateDate" Type="DateTime" Precision="0" />
+          <Property Name="MemBirth" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="FavoriteShopList" Relationship="Self.FK__FavoriteS__MemNo__4E88ABD4" FromRole="Member" ToRole="FavoriteShopList" />
+          <NavigationProperty Name="MemberList" Relationship="Self.FK__MemberLis__MemNo__52593CB8" FromRole="Member" ToRole="MemberList" />
+        </EntityType>
+        <EntityType Name="MemberList">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemNo" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__MemberLis__MemNo__52593CB8" FromRole="MemberList" ToRole="Member" />
+          <NavigationProperty Name="ShopOrder" Relationship="Self.FK__ShopOrder__Order__5812160E" FromRole="MemberList" ToRole="ShopOrder" />
+        </EntityType>
+        <EntityType Name="OrderList">
+          <Key>
+            <PropertyRef Name="ShoporderNo" />
+            <PropertyRef Name="ProNo" />
+          </Key>
+          <Property Name="ShoporderNo" Type="Int32" Nullable="false" />
+          <Property Name="ProNo" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderList__ProNo__5BE2A6F2" FromRole="OrderList" ToRole="Product" />
+          <NavigationProperty Name="ShopOrder" Relationship="Self.FK__OrderList__Shopo__5AEE82B9" FromRole="OrderList" ToRole="ShopOrder" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProNo" />
+          </Key>
+          <Property Name="ProNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShNo" Type="Int32" />
+          <Property Name="ProClassNo" Type="Int32" />
+          <Property Name="ProName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProPrice" Type="Int32" Nullable="false" />
+          <Property Name="ProStatement" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ProPic1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProPic2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProPic3" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProCreateDate" Type="DateTime" Precision="0" />
+          <Property Name="ProUpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="ProOffshelfDate" Type="DateTime" Precision="0" />
+          <Property Name="ProPop" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderList" Relationship="Self.FK__OrderList__ProNo__5BE2A6F2" FromRole="Product" ToRole="OrderList" />
+          <NavigationProperty Name="ProductClass" Relationship="Self.FK__Product__ProClas__47DBAE45" FromRole="Product" ToRole="ProductClass" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK__Product__ShNo__46E78A0C" FromRole="Product" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="ProductClass">
+          <Key>
+            <PropertyRef Name="ProClassNo" />
+          </Key>
+          <Property Name="ProClassNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShNo" Type="Int32" />
+          <Property Name="ProClassName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__ProClas__47DBAE45" FromRole="ProductClass" ToRole="Product" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK__ProductCla__ShNo__440B1D61" FromRole="ProductClass" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="ShClass">
+          <Key>
+            <PropertyRef Name="ShClassNo" />
+          </Key>
+          <Property Name="ShClassNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShClassName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="ShNo" />
+          </Key>
+          <Property Name="ShNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpNo" Type="Int32" />
+          <Property Name="ShThePic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ShName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShClassNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShBoss" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShContact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShTel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShAbout" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ShLogoPic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ShUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShAdState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ShAdTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ShAdPic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ShPopShop" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ShCheckState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ShStartDate" Type="DateTime" Precision="0" />
+          <Property Name="ShEndDate" Type="DateTime" Precision="0" />
+          <Property Name="ShCheckDate" Type="DateTime" Precision="0" />
+          <Property Name="ShPwdState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ShStopRightStartDate" Type="DateTime" Precision="0" />
+          <Property Name="ShStopRightEnddate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertisem__ShNo__3E52440B" FromRole="Shop" ToRole="Advertisement" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Shop__EmpNo__3A81B327" FromRole="Shop" ToRole="Employee" />
+          <NavigationProperty Name="FavoriteShopList" Relationship="Self.FK__FavoriteSh__ShNo__4F7CD00D" FromRole="Shop" ToRole="FavoriteShopList" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__ShNo__46E78A0C" FromRole="Shop" ToRole="Product" />
+          <NavigationProperty Name="ProductClass" Relationship="Self.FK__ProductCla__ShNo__440B1D61" FromRole="Shop" ToRole="ProductClass" />
+          <NavigationProperty Name="ShopOrder" Relationship="Self.FK__ShopOrder__ShNo__571DF1D5" FromRole="Shop" ToRole="ShopOrder" />
+        </EntityType>
+        <EntityType Name="ShopOrder">
+          <Key>
+            <PropertyRef Name="ShoporderNo" />
+          </Key>
+          <Property Name="ShoporderNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="ShNo" Type="Int32" />
+          <Property Name="OrderPrice" Type="Int32" Nullable="false" />
+          <Property Name="ReferredToDate" Type="DateTime" Precision="0" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="RecipientName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RecipientTel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RecipientAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PayType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MemberList" Relationship="Self.FK__ShopOrder__Order__5812160E" FromRole="ShopOrder" ToRole="MemberList" />
+          <NavigationProperty Name="OrderList" Relationship="Self.FK__OrderList__Shopo__5AEE82B9" FromRole="ShopOrder" ToRole="OrderList" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK__ShopOrder__ShNo__571DF1D5" FromRole="ShopOrder" ToRole="Shop" />
+        </EntityType>
+        <Association Name="FK__Advertise__EmpNo__3D5E1FD2">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpNo" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Advertisem__ShNo__3E52440B">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Announcem__EmpNo__30F848ED">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Announcement" Type="Self.Announcement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpNo" />
+            </Principal>
+            <Dependent Role="Announcement">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Authority__Autho__2D27B809">
+          <End Role="AuthorityFunction" Type="Self.AuthorityFunction" Multiplicity="1" />
+          <End Role="Authority" Type="Self.Authority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuthorityFunction">
+              <PropertyRef Name="AuthorityNo" />
+            </Principal>
+            <Dependent Role="Authority">
+              <PropertyRef Name="AuthorityNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Authority__EmpNo__2E1BDC42">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Authority" Type="Self.Authority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpNo" />
+            </Principal>
+            <Dependent Role="Authority">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shop__EmpNo__3A81B327">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpNo" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavoriteS__MemNo__4E88ABD4">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="FavoriteShopList" Type="Self.FavoriteShopList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemNo" />
+            </Principal>
+            <Dependent Role="FavoriteShopList">
+              <PropertyRef Name="MemNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavoriteSh__ShNo__4F7CD00D">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+          <End Role="FavoriteShopList" Type="Self.FavoriteShopList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="FavoriteShopList">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MemberLis__MemNo__52593CB8">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="MemberList" Type="Self.MemberList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemNo" />
+            </Principal>
+            <Dependent Role="MemberList">
+              <PropertyRef Name="MemNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShopOrder__Order__5812160E">
+          <End Role="MemberList" Type="Self.MemberList" Multiplicity="0..1" />
+          <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberList">
+              <PropertyRef Name="OrderNo" />
+            </Principal>
+            <Dependent Role="ShopOrder">
+              <PropertyRef Name="OrderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderList__ProNo__5BE2A6F2">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderList" Type="Self.OrderList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProNo" />
+            </Principal>
+            <Dependent Role="OrderList">
+              <PropertyRef Name="ProNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderList__Shopo__5AEE82B9">
+          <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="1" />
+          <End Role="OrderList" Type="Self.OrderList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShopOrder">
+              <PropertyRef Name="ShoporderNo" />
+            </Principal>
+            <Dependent Role="OrderList">
+              <PropertyRef Name="ShoporderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__ProClas__47DBAE45">
+          <End Role="ProductClass" Type="Self.ProductClass" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductClass">
+              <PropertyRef Name="ProClassNo" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProClassNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__ShNo__46E78A0C">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductCla__ShNo__440B1D61">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="ProductClass" Type="Self.ProductClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="ProductClass">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShopOrder__ShNo__571DF1D5">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShNo" />
+            </Principal>
+            <Dependent Role="ShopOrder">
+              <PropertyRef Name="ShNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AllShowEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advertisement" EntityType="Self.Advertisement" />
+          <EntitySet Name="Announcement" EntityType="Self.Announcement" />
+          <EntitySet Name="Authority" EntityType="Self.Authority" />
+          <EntitySet Name="AuthorityFunction" EntityType="Self.AuthorityFunction" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="FavoriteShopList" EntityType="Self.FavoriteShopList" />
+          <EntitySet Name="Member" EntityType="Self.Member" />
+          <EntitySet Name="MemberList" EntityType="Self.MemberList" />
+          <EntitySet Name="OrderList" EntityType="Self.OrderList" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductClass" EntityType="Self.ProductClass" />
+          <EntitySet Name="ShClass" EntityType="Self.ShClass" />
+          <EntitySet Name="Shop" EntityType="Self.Shop" />
+          <EntitySet Name="ShopOrder" EntityType="Self.ShopOrder" />
+          <AssociationSet Name="FK__Advertise__EmpNo__3D5E1FD2" Association="Self.FK__Advertise__EmpNo__3D5E1FD2">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Advertisem__ShNo__3E52440B" Association="Self.FK__Advertisem__ShNo__3E52440B">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Announcem__EmpNo__30F848ED" Association="Self.FK__Announcem__EmpNo__30F848ED">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Announcement" EntitySet="Announcement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Authority__Autho__2D27B809" Association="Self.FK__Authority__Autho__2D27B809">
+            <End Role="AuthorityFunction" EntitySet="AuthorityFunction" />
+            <End Role="Authority" EntitySet="Authority" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Authority__EmpNo__2E1BDC42" Association="Self.FK__Authority__EmpNo__2E1BDC42">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Authority" EntitySet="Authority" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shop__EmpNo__3A81B327" Association="Self.FK__Shop__EmpNo__3A81B327">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavoriteS__MemNo__4E88ABD4" Association="Self.FK__FavoriteS__MemNo__4E88ABD4">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FavoriteShopList" EntitySet="FavoriteShopList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavoriteSh__ShNo__4F7CD00D" Association="Self.FK__FavoriteSh__ShNo__4F7CD00D">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="FavoriteShopList" EntitySet="FavoriteShopList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MemberLis__MemNo__52593CB8" Association="Self.FK__MemberLis__MemNo__52593CB8">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="MemberList" EntitySet="MemberList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShopOrder__Order__5812160E" Association="Self.FK__ShopOrder__Order__5812160E">
+            <End Role="MemberList" EntitySet="MemberList" />
+            <End Role="ShopOrder" EntitySet="ShopOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderList__ProNo__5BE2A6F2" Association="Self.FK__OrderList__ProNo__5BE2A6F2">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderList" EntitySet="OrderList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderList__Shopo__5AEE82B9" Association="Self.FK__OrderList__Shopo__5AEE82B9">
+            <End Role="ShopOrder" EntitySet="ShopOrder" />
+            <End Role="OrderList" EntitySet="OrderList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__ProClas__47DBAE45" Association="Self.FK__Product__ProClas__47DBAE45">
+            <End Role="ProductClass" EntitySet="ProductClass" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__ShNo__46E78A0C" Association="Self.FK__Product__ShNo__46E78A0C">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductCla__ShNo__440B1D61" Association="Self.FK__ProductCla__ShNo__440B1D61">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="ProductClass" EntitySet="ProductClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShopOrder__ShNo__571DF1D5" Association="Self.FK__ShopOrder__ShNo__571DF1D5">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="ShopOrder" EntitySet="ShopOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AllShowModelStoreContainer" CdmEntityContainer="AllShowEntities">
+          <EntitySetMapping Name="Advertisement">
+            <EntityTypeMapping TypeName="AllShowModel.Advertisement">
+              <MappingFragment StoreEntitySet="Advertisement">
+                <ScalarProperty Name="AdNo" ColumnName="AdNo" />
+                <ScalarProperty Name="ShNo" ColumnName="ShNo" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="AdTitle" ColumnName="AdTitle" />
+                <ScalarProperty Name="AdApplyDate" ColumnName="AdApplyDate" />
+                <ScalarProperty Name="AdStartDate" ColumnName="AdStartDate" />
+                <ScalarProperty Name="AdTime" ColumnName="AdTime" />
+                <ScalarProperty Name="AdPrice" ColumnName="AdPrice" />
+                <ScalarProperty Name="AdPic" ColumnName="AdPic" />
+                <ScalarProperty Name="AdURL" ColumnName="AdURL" />
+                <ScalarProperty Name="AdCheckState" ColumnName="AdCheckState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Announcement">
+            <EntityTypeMapping TypeName="AllShowModel.Announcement">
+              <MappingFragment StoreEntitySet="Announcement">
+                <ScalarProperty Name="AnnouncementNo" ColumnName="AnnouncementNo" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="AnnouncementType" ColumnName="AnnouncementType" />
+                <ScalarProperty Name="AnnouncementContent" ColumnName="AnnouncementContent" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authority">
+            <EntityTypeMapping TypeName="AllShowModel.Authority">
+              <MappingFragment StoreEntitySet="Authority">
+                <ScalarProperty Name="AuthorityNo" ColumnName="AuthorityNo" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthorityFunction">
+            <EntityTypeMapping TypeName="AllShowModel.AuthorityFunction">
+              <MappingFragment StoreEntitySet="AuthorityFunction">
+                <ScalarProperty Name="AuthorityNo" ColumnName="AuthorityNo" />
+                <ScalarProperty Name="AuthorityName" ColumnName="AuthorityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="AllShowModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpAccount" ColumnName="EmpAccount" />
+                <ScalarProperty Name="EmpPwd" ColumnName="EmpPwd" />
+                <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+                <ScalarProperty Name="EmpSex" ColumnName="EmpSex" />
+                <ScalarProperty Name="EmpBirth" ColumnName="EmpBirth" />
+                <ScalarProperty Name="EmpTel" ColumnName="EmpTel" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
+                <ScalarProperty Name="EmpAccountState" ColumnName="EmpAccountState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriteShopList">
+            <EntityTypeMapping TypeName="AllShowModel.FavoriteShopList">
+              <MappingFragment StoreEntitySet="FavoriteShopList">
+                <ScalarProperty Name="MemNo" ColumnName="MemNo" />
+                <ScalarProperty Name="ShNo" ColumnName="ShNo" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="AllShowModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="MemNo" ColumnName="MemNo" />
+                <ScalarProperty Name="MemEmail" ColumnName="MemEmail" />
+                <ScalarProperty Name="MemPwd" ColumnName="MemPwd" />
+                <ScalarProperty Name="MemDiminutive" ColumnName="MemDiminutive" />
+                <ScalarProperty Name="MemName" ColumnName="MemName" />
+                <ScalarProperty Name="MemSex" ColumnName="MemSex" />
+                <ScalarProperty Name="MemTel" ColumnName="MemTel" />
+                <ScalarProperty Name="MemAddress" ColumnName="MemAddress" />
+                <ScalarProperty Name="MemPic" ColumnName="MemPic" />
+                <ScalarProperty Name="MemAccountState" ColumnName="MemAccountState" />
+                <ScalarProperty Name="MemCheckNumber" ColumnName="MemCheckNumber" />
+                <ScalarProperty Name="MemCreateDate" ColumnName="MemCreateDate" />
+                <ScalarProperty Name="MemUudateDate" ColumnName="MemUudateDate" />
+                <ScalarProperty Name="MemBirth" ColumnName="MemBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberList">
+            <EntityTypeMapping TypeName="AllShowModel.MemberList">
+              <MappingFragment StoreEntitySet="MemberList">
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="MemNo" ColumnName="MemNo" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderList">
+            <EntityTypeMapping TypeName="AllShowModel.OrderList">
+              <MappingFragment StoreEntitySet="OrderList">
+                <ScalarProperty Name="ShoporderNo" ColumnName="ShoporderNo" />
+                <ScalarProperty Name="ProNo" ColumnName="ProNo" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="AllShowModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProNo" ColumnName="ProNo" />
+                <ScalarProperty Name="ShNo" ColumnName="ShNo" />
+                <ScalarProperty Name="ProClassNo" ColumnName="ProClassNo" />
+                <ScalarProperty Name="ProName" ColumnName="ProName" />
+                <ScalarProperty Name="ProPrice" ColumnName="ProPrice" />
+                <ScalarProperty Name="ProStatement" ColumnName="ProStatement" />
+                <ScalarProperty Name="ProState" ColumnName="ProState" />
+                <ScalarProperty Name="ProPic1" ColumnName="ProPic1" />
+                <ScalarProperty Name="ProPic2" ColumnName="ProPic2" />
+                <ScalarProperty Name="ProPic3" ColumnName="ProPic3" />
+                <ScalarProperty Name="ProCreateDate" ColumnName="ProCreateDate" />
+                <ScalarProperty Name="ProUpdateDate" ColumnName="ProUpdateDate" />
+                <ScalarProperty Name="ProOffshelfDate" ColumnName="ProOffshelfDate" />
+                <ScalarProperty Name="ProPop" ColumnName="ProPop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductClass">
+            <EntityTypeMapping TypeName="AllShowModel.ProductClass">
+              <MappingFragment StoreEntitySet="ProductClass">
+                <ScalarProperty Name="ProClassNo" ColumnName="ProClassNo" />
+                <ScalarProperty Name="ShNo" ColumnName="ShNo" />
+                <ScalarProperty Name="ProClassName" ColumnName="ProClassName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShClass">
+            <EntityTypeMapping TypeName="AllShowModel.ShClass">
+              <MappingFragment StoreEntitySet="ShClass">
+                <ScalarProperty Name="ShClassNo" ColumnName="ShClassNo" />
+                <ScalarProperty Name="ShClassName" ColumnName="ShClassName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shop">
+            <EntityTypeMapping TypeName="AllShowModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="ShNo" ColumnName="ShNo" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="ShThePic" ColumnName="ShThePic" />
+                <ScalarProperty Name="ShName" ColumnName="ShName" />
+                <ScalarProperty Name="ShClassNo" ColumnName="ShClassNo" />
+                <ScalarProperty Name="ShAccount" ColumnName="ShAccount" />
+                <ScalarProperty Name="ShPwd" ColumnName="ShPwd" />
+                <ScalarProperty Name="ShBoss" ColumnName="ShBoss" />
+                <ScalarProperty Name="ShContact" ColumnName="ShContact" />
+                <ScalarProperty Name="ShAddress" ColumnName="ShAddress" />
+                <ScalarProperty Name="ShTel" ColumnName="ShTel" />
+                <ScalarProperty Name="ShEmail" ColumnName="ShEmail" />
+                <ScalarProperty Name="ShAbout" ColumnName="ShAbout" />
+                <ScalarProperty Name="ShLogoPic" ColumnName="ShLogoPic" />
+                <ScalarProperty Name="ShUrl" ColumnName="ShUrl" />
+                <ScalarProperty Name="ShAdState" ColumnName="ShAdState" />
+                <ScalarProperty Name="ShAdTitle" ColumnName="ShAdTitle" />
+                <ScalarProperty Name="ShAdPic" ColumnName="ShAdPic" />
+                <ScalarProperty Name="ShPopShop" ColumnName="ShPopShop" />
+                <ScalarProperty Name="ShCheckState" ColumnName="ShCheckState" />
+                <ScalarProperty Name="ShStartDate" ColumnName="ShStartDate" />
+                <ScalarProperty Name="ShEndDate" ColumnName="ShEndDate" />
+                <ScalarProperty Name="ShCheckDate" ColumnName="ShCheckDate" />
+                <ScalarProperty Name="ShPwdState" ColumnName="ShPwdState" />
+                <ScalarProperty Name="ShStopRightStartDate" ColumnName="ShStopRightStartDate" />
+                <ScalarProperty Name="ShStopRightEnddate" ColumnName="ShStopRightEnddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopOrder">
+            <EntityTypeMapping TypeName="AllShowModel.ShopOrder">
+              <MappingFragment StoreEntitySet="ShopOrder">
+                <ScalarProperty Name="ShoporderNo" ColumnName="ShoporderNo" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="ShNo" ColumnName="ShNo" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="ReferredToDate" ColumnName="ReferredToDate" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="OrderState" ColumnName="OrderState" />
+                <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
+                <ScalarProperty Name="RecipientTel" ColumnName="RecipientTel" />
+                <ScalarProperty Name="RecipientAddress" ColumnName="RecipientAddress" />
+                <ScalarProperty Name="PayType" ColumnName="PayType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
