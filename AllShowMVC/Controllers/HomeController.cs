@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AllShowMVC.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,8 @@ namespace AllShowMVC.Controllers
     {
         public ActionResult Index()
         {
+            TestService testService = new TestService();
+            var query = testService.GetMembers();
             return View();
         }
 
