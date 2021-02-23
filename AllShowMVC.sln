@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllShowMVC.Dao", "AllShowMV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllShowMVC.Service", "AllShowMVC.Service\AllShowMVC.Service.csproj", "{F5C0FB37-0F3E-4E66-88BA-E09AA59B1376}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllShowMVC.Resource", "AllShowMVC.Resource\AllShowMVC.Resource.csproj", "{3F2394A3-C07C-4DB7-BC01-745F6C402B6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F5C0FB37-0F3E-4E66-88BA-E09AA59B1376}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5C0FB37-0F3E-4E66-88BA-E09AA59B1376}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5C0FB37-0F3E-4E66-88BA-E09AA59B1376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2394A3-C07C-4DB7-BC01-745F6C402B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2394A3-C07C-4DB7-BC01-745F6C402B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2394A3-C07C-4DB7-BC01-745F6C402B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2394A3-C07C-4DB7-BC01-745F6C402B6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

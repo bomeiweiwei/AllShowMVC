@@ -143,6 +143,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +178,8 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\package.json" />
+    <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -189,6 +192,10 @@
     <ProjectReference Include="..\AllShowMVC.Models\AllShowMVC.Models.csproj">
       <Project>{2bf04eb2-2e22-4230-8b5a-443991439b7c}</Project>
       <Name>AllShowMVC.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllShowMVC.Resource\AllShowMVC.Resource.csproj">
+      <Project>{3f2394a3-c07c-4db7-bc01-745f6c402b6e}</Project>
+      <Name>AllShowMVC.Resource</Name>
     </ProjectReference>
     <ProjectReference Include="..\AllShowMVC.Service\AllShowMVC.Service.csproj">
       <Project>{f5c0fb37-0f3e-4e66-88ba-e09aa59b1376}</Project>

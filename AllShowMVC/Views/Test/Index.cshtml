@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AllShowMVC.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("中文", "SetCulture", "Test", new { culture = "zh-TW", returnUrl = this.Request.RawUrl }, null)
+    @Html.ActionLink("English", "SetCulture", "Test", new { culture = "en-US", returnUrl = this.Request.RawUrl }, null)
+</p>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @AllShowMVC.Resource.App_GlobalResources.AllShowResource.MemEmail
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemDiminutive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemSex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemDiminutive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemSex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemAddress)
+        </td>        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
