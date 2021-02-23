@@ -46,27 +46,27 @@ namespace AllShowMVC.Service
         /// </summary>
         /// <param name="Item"></param>
         /// <returns></returns>
-        public int Create(T Item)
+        public int Create(T Item, bool Save = true)
         {
-            return service.GetObj.Create(Item);
+            return service.GetObj.Create(Item, Save);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="Item"></param>
         /// <returns></returns>
-        public int Update(T Item)
+        public int Update(T Item, bool Save = true)
         {
-            return service.GetObj.Update(Item);
+            return service.GetObj.Update(Item, Save);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="Item"></param>
         /// <returns></returns>
-        public int Delete(T Item)
+        public int Delete(T Item, bool Save = true)
         {
-            return service.GetObj.Delete(Item);
+            return service.GetObj.Delete(Item, Save);
         }
 
         public void Dispose()

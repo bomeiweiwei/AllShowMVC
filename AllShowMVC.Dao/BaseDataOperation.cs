@@ -65,12 +65,15 @@ namespace AllShowMVC.Dao
             /// </summary>
             /// <param name="Item"></param>
             /// <returns></returns>
-            public int Create(T Item)
+            public int Create(T Item, bool Save = true)
             {
                 try
                 {
                     db.Set<T>().Add(Item);
-                    return db.SaveChanges();
+                    if (Save)
+                        return db.SaveChanges();
+                    else
+                        return 0;
                 }
                 catch (DbEntityValidationException)
                 {
@@ -90,12 +93,15 @@ namespace AllShowMVC.Dao
             /// </summary>
             /// <param name="Item"></param>
             /// <returns></returns>
-            public int Update(T Item)
+            public int Update(T Item, bool Save = true)
             {
                 try
                 {
                     db.Entry(Item).State = EntityState.Modified;
-                    return db.SaveChanges();
+                    if (Save)
+                        return db.SaveChanges();
+                    else
+                        return 0;
                 }
                 catch (DbEntityValidationException)
                 {
@@ -115,12 +121,15 @@ namespace AllShowMVC.Dao
             /// </summary>
             /// <param name="Item"></param>
             /// <returns></returns>
-            public int Delete(T Item)
+            public int Delete(T Item, bool Save = true)
             {
                 try
                 {
                     db.Set<T>().Remove(Item);
-                    return db.SaveChanges();
+                    if (Save)
+                        return db.SaveChanges();
+                    else
+                        return 0;
                 }
                 catch (DbEntityValidationException)
                 {

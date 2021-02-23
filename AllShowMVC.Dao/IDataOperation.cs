@@ -12,9 +12,9 @@ namespace AllShowMVC.Dao
         IQueryable<T> Get(Expression<Func<T, bool>> whereLambda);
         T FindOne(Expression<Func<T, bool>> whereLambda);
         IQueryable<T> GetAll();
-        int Create(T Item);
-        int Update(T Item);
-        int Delete(T Item);
+        int Create(T Item, bool Save);
+        int Update(T Item, bool Save);
+        int Delete(T Item, bool Save);
         void Dispose();
     }
 }
