@@ -126,4 +126,7 @@
   <data name="MemEmail" xml:space="preserve">
     <value>會員信箱</value>
   </data>
+  <data name="MemName" xml:space="preserve">
+    <value>會員姓名</value>
+  </data>
 </root>

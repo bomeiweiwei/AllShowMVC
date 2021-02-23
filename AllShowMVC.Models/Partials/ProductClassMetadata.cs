@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Pro Class No
     		/// </summary>        
-    	    [DisplayName("ProClassNo")]
-            [Required(ErrorMessage = "Pro Class No is required")]
+    	    [ResourceTool.LocalizedDisplayName("ProClassNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int ProClassNo { get; set; }
     
@@ -33,16 +33,16 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Sh No
     		/// </summary>        
-    	    [DisplayName("ShNo")]
+    	    [ResourceTool.LocalizedDisplayName("ShNo", typeof(AllShowResource))]
     		public Nullable<int> ShNo { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Class Name
     		/// </summary>        
-    	    [DisplayName("ProClassName")]
-            [Required(ErrorMessage = "Pro Class Name is required")]
-            [MaxLength(20, ErrorMessage = "Pro Class Name cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ProClassName", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ProClassName { get; set; }
     
     		    

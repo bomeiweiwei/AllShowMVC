@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Mem No
     		/// </summary>        
-    	    [DisplayName("MemNo")]
-            [Required(ErrorMessage = "Mem No is required")]
+    	    [ResourceTool.LocalizedDisplayName("MemNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int MemNo { get; set; }
     
@@ -33,8 +33,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Sh No
     		/// </summary>        
-    	    [DisplayName("ShNo")]
-            [Required(ErrorMessage = "Sh No is required")]
+    	    [ResourceTool.LocalizedDisplayName("ShNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int ShNo { get; set; }
     
@@ -42,8 +42,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Note
     		/// </summary>        
-    	    [DisplayName("Note")]
-            [MaxLength(10, ErrorMessage = "Note cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("Note", typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string Note { get; set; }
     
     		    

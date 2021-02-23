@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Mem No
     		/// </summary>        
-    	    [DisplayName("MemNo")]
-            [Required(ErrorMessage = "Mem No is required")]
+    	    [ResourceTool.LocalizedDisplayName("MemNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int MemNo { get; set; }
     
@@ -33,109 +33,109 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Mem Email
     		/// </summary>        
-    	    [DisplayName("MemEmail")]
-            [Required(ErrorMessage = "Mem Email is required")]
-            [MaxLength(60, ErrorMessage = "Mem Email cannot be longer than 60 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemEmail", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(60, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemEmail { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Pwd
     		/// </summary>        
-    	    [DisplayName("MemPwd")]
-            [Required(ErrorMessage = "Mem Pwd is required")]
-            [MaxLength(20, ErrorMessage = "Mem Pwd cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemPwd", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemPwd { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Diminutive
     		/// </summary>        
-    	    [DisplayName("MemDiminutive")]
-            [MaxLength(40, ErrorMessage = "Mem Diminutive cannot be longer than 40 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemDiminutive", typeof(AllShowResource))]
+            [MaxLength(40, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemDiminutive { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Name
     		/// </summary>        
-    	    [DisplayName("MemName")]
-            [Required(ErrorMessage = "Mem Name is required")]
-            [MaxLength(40, ErrorMessage = "Mem Name cannot be longer than 40 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemName", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(40, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemName { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Sex
     		/// </summary>        
-    	    [DisplayName("MemSex")]
-            [Required(ErrorMessage = "Mem Sex is required")]
-            [MaxLength(1, ErrorMessage = "Mem Sex cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemSex", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemSex { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Tel
     		/// </summary>        
-    	    [DisplayName("MemTel")]
-            [Required(ErrorMessage = "Mem Tel is required")]
-            [MaxLength(10, ErrorMessage = "Mem Tel cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemTel", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemTel { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Address
     		/// </summary>        
-    	    [DisplayName("MemAddress")]
-            [Required(ErrorMessage = "Mem Address is required")]
-            [MaxLength(80, ErrorMessage = "Mem Address cannot be longer than 80 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemAddress", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(80, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemAddress { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Pic
     		/// </summary>        
-    	    [DisplayName("MemPic")]
-            [MaxLength(1000, ErrorMessage = "Mem Pic cannot be longer than 1000 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemPic", typeof(AllShowResource))]
+            [MaxLength(1000, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemPic { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Account State
     		/// </summary>        
-    	    [DisplayName("MemAccountState")]
-            [MaxLength(1, ErrorMessage = "Mem Account State cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemAccountState", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemAccountState { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Check Number
     		/// </summary>        
-    	    [DisplayName("MemCheckNumber")]
-            [Required(ErrorMessage = "Mem Check Number is required")]
-            [MaxLength(5, ErrorMessage = "Mem Check Number cannot be longer than 5 characters")]
+    	    [ResourceTool.LocalizedDisplayName("MemCheckNumber", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(5, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemCheckNumber { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Create Date
     		/// </summary>        
-    	    [DisplayName("MemCreateDate")]
-            [Required(ErrorMessage = "Mem Create Date is required")]
+    	    [ResourceTool.LocalizedDisplayName("MemCreateDate", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime MemCreateDate { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Uudate Date
     		/// </summary>        
-    	    [DisplayName("MemUudateDate")]
+    	    [ResourceTool.LocalizedDisplayName("MemUudateDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> MemUudateDate { get; set; }
     
     		    
     		/// <summary>
     		/// Mem Birth
     		/// </summary>        
-    	    [DisplayName("MemBirth")]
+    	    [ResourceTool.LocalizedDisplayName("MemBirth", typeof(AllShowResource))]
     		public Nullable<System.DateTime> MemBirth { get; set; }
     
     		    

@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Emp No
     		/// </summary>        
-    	    [DisplayName("EmpNo")]
-            [Required(ErrorMessage = "Emp No is required")]
+    	    [ResourceTool.LocalizedDisplayName("EmpNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int EmpNo { get; set; }
     
@@ -33,85 +33,85 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Emp Name
     		/// </summary>        
-    	    [DisplayName("EmpName")]
-            [Required(ErrorMessage = "Emp Name is required")]
-            [MaxLength(20, ErrorMessage = "Emp Name cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("EmpName", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpName { get; set; }
     
     		    
     		/// <summary>
     		/// Emp Account
     		/// </summary>        
-    	    [DisplayName("EmpAccount")]
-            [Required(ErrorMessage = "Emp Account is required")]
-            [MaxLength(20, ErrorMessage = "Emp Account cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("EmpAccount", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpAccount { get; set; }
     
     		    
     		/// <summary>
     		/// Emp Pwd
     		/// </summary>        
-    	    [DisplayName("EmpPwd")]
-            [Required(ErrorMessage = "Emp Pwd is required")]
-            [MaxLength(20, ErrorMessage = "Emp Pwd cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("EmpPwd", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpPwd { get; set; }
     
     		    
     		/// <summary>
     		/// Emp Email
     		/// </summary>        
-    	    [DisplayName("EmpEmail")]
-            [Required(ErrorMessage = "Emp Email is required")]
-            [MaxLength(40, ErrorMessage = "Emp Email cannot be longer than 40 characters")]
+    	    [ResourceTool.LocalizedDisplayName("EmpEmail", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(40, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpEmail { get; set; }
     
     		    
     		/// <summary>
     		/// Emp Sex
     		/// </summary>        
-    	    [DisplayName("EmpSex")]
-            [Required(ErrorMessage = "Emp Sex is required")]
-            [MaxLength(1, ErrorMessage = "Emp Sex cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("EmpSex", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpSex { get; set; }
     
     		    
     		/// <summary>
     		/// Emp Birth
     		/// </summary>        
-    	    [DisplayName("EmpBirth")]
-            [Required(ErrorMessage = "Emp Birth is required")]
+    	    [ResourceTool.LocalizedDisplayName("EmpBirth", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime EmpBirth { get; set; }
     
     		    
     		/// <summary>
     		/// Emp Tel
     		/// </summary>        
-    	    [DisplayName("EmpTel")]
-            [Required(ErrorMessage = "Emp Tel is required")]
-            [MaxLength(10, ErrorMessage = "Emp Tel cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("EmpTel", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpTel { get; set; }
     
     		    
     		/// <summary>
     		/// Hire Date
     		/// </summary>        
-    	    [DisplayName("HireDate")]
-            [Required(ErrorMessage = "Hire Date is required")]
+    	    [ResourceTool.LocalizedDisplayName("HireDate", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime HireDate { get; set; }
     
     		    
     		/// <summary>
     		/// Leave Date
     		/// </summary>        
-    	    [DisplayName("LeaveDate")]
+    	    [ResourceTool.LocalizedDisplayName("LeaveDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> LeaveDate { get; set; }
     
     		    
     		/// <summary>
     		/// Emp Account State
     		/// </summary>        
-    	    [DisplayName("EmpAccountState")]
-            [MaxLength(1, ErrorMessage = "Emp Account State cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("EmpAccountState", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpAccountState { get; set; }
     
     		    

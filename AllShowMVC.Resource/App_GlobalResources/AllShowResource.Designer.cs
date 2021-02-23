@@ -86,5 +86,14 @@ namespace AllShowMVC.Resource.App_GlobalResources {
                 return ResourceManager.GetString("MemEmail", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查詢類似 會員姓名 的當地語系化字串。
+        /// </summary>
+        public static string MemName {
+            get {
+                return ResourceManager.GetString("MemName", resourceCulture);
+            }
+        }
     }
 }

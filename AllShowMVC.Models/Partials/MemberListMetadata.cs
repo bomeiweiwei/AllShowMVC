@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Order No
     		/// </summary>        
-    	    [DisplayName("OrderNo")]
-            [Required(ErrorMessage = "Order No is required")]
+    	    [ResourceTool.LocalizedDisplayName("OrderNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int OrderNo { get; set; }
     
@@ -33,14 +33,14 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Mem No
     		/// </summary>        
-    	    [DisplayName("MemNo")]
+    	    [ResourceTool.LocalizedDisplayName("MemNo", typeof(AllShowResource))]
     		public Nullable<int> MemNo { get; set; }
     
     		    
     		/// <summary>
     		/// Order Date
     		/// </summary>        
-    	    [DisplayName("OrderDate")]
+    	    [ResourceTool.LocalizedDisplayName("OrderDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> OrderDate { get; set; }
     
     		    

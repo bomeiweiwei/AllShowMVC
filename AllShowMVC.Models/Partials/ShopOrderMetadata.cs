@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Shoporder No
     		/// </summary>        
-    	    [DisplayName("ShoporderNo")]
-            [Required(ErrorMessage = "Shoporder No is required")]
+    	    [ResourceTool.LocalizedDisplayName("ShoporderNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int ShoporderNo { get; set; }
     
@@ -33,77 +33,77 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Order No
     		/// </summary>        
-    	    [DisplayName("OrderNo")]
+    	    [ResourceTool.LocalizedDisplayName("OrderNo", typeof(AllShowResource))]
     		public Nullable<int> OrderNo { get; set; }
     
     		    
     		/// <summary>
     		/// Sh No
     		/// </summary>        
-    	    [DisplayName("ShNo")]
+    	    [ResourceTool.LocalizedDisplayName("ShNo", typeof(AllShowResource))]
     		public Nullable<int> ShNo { get; set; }
     
     		    
     		/// <summary>
     		/// Order Price
     		/// </summary>        
-    	    [DisplayName("OrderPrice")]
-            [Required(ErrorMessage = "Order Price is required")]
+    	    [ResourceTool.LocalizedDisplayName("OrderPrice", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public int OrderPrice { get; set; }
     
     		    
     		/// <summary>
     		/// Referred To Date
     		/// </summary>        
-    	    [DisplayName("ReferredToDate")]
+    	    [ResourceTool.LocalizedDisplayName("ReferredToDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ReferredToDate { get; set; }
     
     		    
     		/// <summary>
     		/// Transaction Date
     		/// </summary>        
-    	    [DisplayName("TransactionDate")]
+    	    [ResourceTool.LocalizedDisplayName("TransactionDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> TransactionDate { get; set; }
     
     		    
     		/// <summary>
     		/// Order State
     		/// </summary>        
-    	    [DisplayName("OrderState")]
-            [MaxLength(1, ErrorMessage = "Order State cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("OrderState", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string OrderState { get; set; }
     
     		    
     		/// <summary>
     		/// Recipient Name
     		/// </summary>        
-    	    [DisplayName("RecipientName")]
-            [Required(ErrorMessage = "Recipient Name is required")]
-            [MaxLength(20, ErrorMessage = "Recipient Name cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("RecipientName", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string RecipientName { get; set; }
     
     		    
     		/// <summary>
     		/// Recipient Tel
     		/// </summary>        
-    	    [DisplayName("RecipientTel")]
-            [MaxLength(10, ErrorMessage = "Recipient Tel cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("RecipientTel", typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string RecipientTel { get; set; }
     
     		    
     		/// <summary>
     		/// Recipient Address
     		/// </summary>        
-    	    [DisplayName("RecipientAddress")]
-            [MaxLength(50, ErrorMessage = "Recipient Address cannot be longer than 50 characters")]
+    	    [ResourceTool.LocalizedDisplayName("RecipientAddress", typeof(AllShowResource))]
+            [MaxLength(50, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string RecipientAddress { get; set; }
     
     		    
     		/// <summary>
     		/// Pay Type
     		/// </summary>        
-    	    [DisplayName("PayType")]
-            [MaxLength(1, ErrorMessage = "Pay Type cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("PayType", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string PayType { get; set; }
     
     		    

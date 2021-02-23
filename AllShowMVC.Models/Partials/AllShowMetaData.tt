@@ -130,8 +130,8 @@ void WriteDisplayName(EdmProperty edmProperty) {
         //displayName = GetFriendlyName(edmProperty.Name);
         
         // Populate actual string to be written
-		WriteLine("{0}[DisplayName(\"{1}\")]", CodeRegion.GetIndent(1), displayName);
-        //WriteLine("{0}[ResourceTool.LocalizedDisplayName(\"{1}\", typeof(NorthWindResource))]", CodeRegion.GetIndent(1), displayName);
+		//WriteLine("{0}[DisplayName(\"{1}\")]", CodeRegion.GetIndent(1), displayName);
+        WriteLine("{0}[ResourceTool.LocalizedDisplayName(\"{1}\", typeof(AllShowResource))]", CodeRegion.GetIndent(1), displayName);
     }
 }
 
@@ -141,9 +141,9 @@ void WriteRequiredAttribute(EdmProperty edmProperty) {
     // Check for required property
     if (!edmProperty.Nullable) 
     {
-      WriteLine("{0}[Required(ErrorMessage = \"{1} is required\")]",
-         CodeRegion.GetIndent(2),GetFriendlyName(edmProperty.Name));
-      //WriteLine("{0}[Required(ErrorMessageResourceName = \"Field_Required\", ErrorMessageResourceType = typeof(NorthWindResource))]",CodeRegion.GetIndent(2));
+      //WriteLine("{0}[Required(ErrorMessage = \"{1} is required\")]",
+      //   CodeRegion.GetIndent(2),GetFriendlyName(edmProperty.Name));
+      WriteLine("{0}[Required(ErrorMessageResourceName = \"Field_Required\", ErrorMessageResourceType = typeof(AllShowResource))]",CodeRegion.GetIndent(2));
     }
 }
 
@@ -163,10 +163,10 @@ void WriteStringLengthAttribute(EdmProperty edmProperty) {
         if (double.TryParse(maxLengthfacet.Value.ToString(), out lengthAttribute)) 
         {
             // Generate actual string for attribute
-            WriteLine("{0}[MaxLength({1}, ErrorMessage = \"{2} cannot " + 
-              "be longer than {1} characters\")]",
-              CodeRegion.GetIndent(2),lengthAttribute,GetFriendlyName(edmProperty.Name));
-            //WriteLine("{0}[MaxLength({1}, ErrorMessageResourceName = \"Field_MaxLength\", ErrorMessageResourceType = typeof(NorthWindResource))]",CodeRegion.GetIndent(2),lengthAttribute);
+            //WriteLine("{0}[MaxLength({1}, ErrorMessage = \"{2} cannot " + 
+            //  "be longer than {1} characters\")]",
+            // CodeRegion.GetIndent(2),lengthAttribute,GetFriendlyName(edmProperty.Name));
+            WriteLine("{0}[MaxLength({1}, ErrorMessageResourceName = \"Field_MaxLength\", ErrorMessageResourceType = typeof(AllShowResource))]",CodeRegion.GetIndent(2),lengthAttribute);
         }
     }
 }
@@ -177,8 +177,8 @@ void WriteHeader(EntityFrameworkTemplateFileManager fileManager, params string[]
 {
     fileManager.StartHeader();
 #>
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

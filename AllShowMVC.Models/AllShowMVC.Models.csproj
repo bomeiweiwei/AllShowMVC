@@ -154,6 +154,10 @@
       <Project>{5a09f280-ef42-4eb3-984b-c75aaa3393b4}</Project>
       <Name>AllShowMVC.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AllShowMVC.Resource\AllShowMVC.Resource.csproj">
+      <Project>{3f2394a3-c07c-4db7-bc01-745f6c402b6e}</Project>
+      <Name>AllShowMVC.Resource</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AllShowModel.Context.tt">

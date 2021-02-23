@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Shoporder No
     		/// </summary>        
-    	    [DisplayName("ShoporderNo")]
-            [Required(ErrorMessage = "Shoporder No is required")]
+    	    [ResourceTool.LocalizedDisplayName("ShoporderNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int ShoporderNo { get; set; }
     
@@ -33,8 +33,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Pro No
     		/// </summary>        
-    	    [DisplayName("ProNo")]
-            [Required(ErrorMessage = "Pro No is required")]
+    	    [ResourceTool.LocalizedDisplayName("ProNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int ProNo { get; set; }
     
@@ -42,8 +42,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Quantity
     		/// </summary>        
-    	    [DisplayName("Quantity")]
-            [Required(ErrorMessage = "Quantity is required")]
+    	    [ResourceTool.LocalizedDisplayName("Quantity", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public int Quantity { get; set; }
     
     		    

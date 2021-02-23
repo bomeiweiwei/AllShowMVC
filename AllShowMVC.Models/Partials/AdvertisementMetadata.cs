@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Ad No
     		/// </summary>        
-    	    [DisplayName("AdNo")]
-            [Required(ErrorMessage = "Ad No is required")]
+    	    [ResourceTool.LocalizedDisplayName("AdNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int AdNo { get; set; }
     
@@ -33,80 +33,80 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Sh No
     		/// </summary>        
-    	    [DisplayName("ShNo")]
+    	    [ResourceTool.LocalizedDisplayName("ShNo", typeof(AllShowResource))]
     		public Nullable<int> ShNo { get; set; }
     
     		    
     		/// <summary>
     		/// Emp No
     		/// </summary>        
-    	    [DisplayName("EmpNo")]
+    	    [ResourceTool.LocalizedDisplayName("EmpNo", typeof(AllShowResource))]
     		public Nullable<int> EmpNo { get; set; }
     
     		    
     		/// <summary>
     		/// Ad Title
     		/// </summary>        
-    	    [DisplayName("AdTitle")]
-            [Required(ErrorMessage = "Ad Title is required")]
-            [MaxLength(20, ErrorMessage = "Ad Title cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("AdTitle", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string AdTitle { get; set; }
     
     		    
     		/// <summary>
     		/// Ad Apply Date
     		/// </summary>        
-    	    [DisplayName("AdApplyDate")]
-            [Required(ErrorMessage = "Ad Apply Date is required")]
+    	    [ResourceTool.LocalizedDisplayName("AdApplyDate", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime AdApplyDate { get; set; }
     
     		    
     		/// <summary>
     		/// Ad Start Date
     		/// </summary>        
-    	    [DisplayName("AdStartDate")]
-            [Required(ErrorMessage = "Ad Start Date is required")]
+    	    [ResourceTool.LocalizedDisplayName("AdStartDate", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime AdStartDate { get; set; }
     
     		    
     		/// <summary>
     		/// Ad Time
     		/// </summary>        
-    	    [DisplayName("AdTime")]
-            [Required(ErrorMessage = "Ad Time is required")]
+    	    [ResourceTool.LocalizedDisplayName("AdTime", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime AdTime { get; set; }
     
     		    
     		/// <summary>
     		/// Ad Price
     		/// </summary>        
-    	    [DisplayName("AdPrice")]
-            [Required(ErrorMessage = "Ad Price is required")]
+    	    [ResourceTool.LocalizedDisplayName("AdPrice", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public int AdPrice { get; set; }
     
     		    
     		/// <summary>
     		/// Ad Pic
     		/// </summary>        
-    	    [DisplayName("AdPic")]
-            [MaxLength(1000, ErrorMessage = "Ad Pic cannot be longer than 1000 characters")]
+    	    [ResourceTool.LocalizedDisplayName("AdPic", typeof(AllShowResource))]
+            [MaxLength(1000, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string AdPic { get; set; }
     
     		    
     		/// <summary>
     		/// Ad URL
     		/// </summary>        
-    	    [DisplayName("AdURL")]
-            [Required(ErrorMessage = "Ad URL is required")]
-            [MaxLength(20, ErrorMessage = "Ad URL cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("AdURL", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string AdURL { get; set; }
     
     		    
     		/// <summary>
     		/// Ad Check State
     		/// </summary>        
-    	    [DisplayName("AdCheckState")]
-            [MaxLength(10, ErrorMessage = "Ad Check State cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("AdCheckState", typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string AdCheckState { get; set; }
     
     		    

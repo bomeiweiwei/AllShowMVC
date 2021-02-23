@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Sh No
     		/// </summary>        
-    	    [DisplayName("ShNo")]
-            [Required(ErrorMessage = "Sh No is required")]
+    	    [ResourceTool.LocalizedDisplayName("ShNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int ShNo { get; set; }
     
@@ -33,204 +33,204 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Emp No
     		/// </summary>        
-    	    [DisplayName("EmpNo")]
+    	    [ResourceTool.LocalizedDisplayName("EmpNo", typeof(AllShowResource))]
     		public Nullable<int> EmpNo { get; set; }
     
     		    
     		/// <summary>
     		/// Sh The Pic
     		/// </summary>        
-    	    [DisplayName("ShThePic")]
-            [MaxLength(1000, ErrorMessage = "Sh The Pic cannot be longer than 1000 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShThePic", typeof(AllShowResource))]
+            [MaxLength(1000, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShThePic { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Name
     		/// </summary>        
-    	    [DisplayName("ShName")]
-            [Required(ErrorMessage = "Sh Name is required")]
-            [MaxLength(20, ErrorMessage = "Sh Name cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShName", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShName { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Class No
     		/// </summary>        
-    	    [DisplayName("ShClassNo")]
-            [Required(ErrorMessage = "Sh Class No is required")]
-            [MaxLength(10, ErrorMessage = "Sh Class No cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShClassNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShClassNo { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Account
     		/// </summary>        
-    	    [DisplayName("ShAccount")]
-            [Required(ErrorMessage = "Sh Account is required")]
-            [MaxLength(20, ErrorMessage = "Sh Account cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShAccount", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShAccount { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Pwd
     		/// </summary>        
-    	    [DisplayName("ShPwd")]
-            [Required(ErrorMessage = "Sh Pwd is required")]
-            [MaxLength(20, ErrorMessage = "Sh Pwd cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShPwd", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShPwd { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Boss
     		/// </summary>        
-    	    [DisplayName("ShBoss")]
-            [Required(ErrorMessage = "Sh Boss is required")]
-            [MaxLength(10, ErrorMessage = "Sh Boss cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShBoss", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShBoss { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Contact
     		/// </summary>        
-    	    [DisplayName("ShContact")]
-            [Required(ErrorMessage = "Sh Contact is required")]
-            [MaxLength(10, ErrorMessage = "Sh Contact cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShContact", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShContact { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Address
     		/// </summary>        
-    	    [DisplayName("ShAddress")]
-            [Required(ErrorMessage = "Sh Address is required")]
-            [MaxLength(30, ErrorMessage = "Sh Address cannot be longer than 30 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShAddress", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(30, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShAddress { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Tel
     		/// </summary>        
-    	    [DisplayName("ShTel")]
-            [Required(ErrorMessage = "Sh Tel is required")]
-            [MaxLength(10, ErrorMessage = "Sh Tel cannot be longer than 10 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShTel", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShTel { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Email
     		/// </summary>        
-    	    [DisplayName("ShEmail")]
-            [Required(ErrorMessage = "Sh Email is required")]
-            [MaxLength(30, ErrorMessage = "Sh Email cannot be longer than 30 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShEmail", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(30, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShEmail { get; set; }
     
     		    
     		/// <summary>
     		/// Sh About
     		/// </summary>        
-    	    [DisplayName("ShAbout")]
-            [MaxLength(300, ErrorMessage = "Sh About cannot be longer than 300 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShAbout", typeof(AllShowResource))]
+            [MaxLength(300, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShAbout { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Logo Pic
     		/// </summary>        
-    	    [DisplayName("ShLogoPic")]
-            [MaxLength(1000, ErrorMessage = "Sh Logo Pic cannot be longer than 1000 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShLogoPic", typeof(AllShowResource))]
+            [MaxLength(1000, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShLogoPic { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Url
     		/// </summary>        
-    	    [DisplayName("ShUrl")]
-            [Required(ErrorMessage = "Sh Url is required")]
-            [MaxLength(50, ErrorMessage = "Sh Url cannot be longer than 50 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShUrl", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(50, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShUrl { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Ad State
     		/// </summary>        
-    	    [DisplayName("ShAdState")]
-            [MaxLength(1, ErrorMessage = "Sh Ad State cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShAdState", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShAdState { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Ad Title
     		/// </summary>        
-    	    [DisplayName("ShAdTitle")]
-            [MaxLength(20, ErrorMessage = "Sh Ad Title cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShAdTitle", typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShAdTitle { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Ad Pic
     		/// </summary>        
-    	    [DisplayName("ShAdPic")]
-            [MaxLength(1000, ErrorMessage = "Sh Ad Pic cannot be longer than 1000 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShAdPic", typeof(AllShowResource))]
+            [MaxLength(1000, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShAdPic { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Pop Shop
     		/// </summary>        
-    	    [DisplayName("ShPopShop")]
-            [MaxLength(1, ErrorMessage = "Sh Pop Shop cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShPopShop", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShPopShop { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Check State
     		/// </summary>        
-    	    [DisplayName("ShCheckState")]
-            [MaxLength(1, ErrorMessage = "Sh Check State cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShCheckState", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShCheckState { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Start Date
     		/// </summary>        
-    	    [DisplayName("ShStartDate")]
+    	    [ResourceTool.LocalizedDisplayName("ShStartDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ShStartDate { get; set; }
     
     		    
     		/// <summary>
     		/// Sh End Date
     		/// </summary>        
-    	    [DisplayName("ShEndDate")]
+    	    [ResourceTool.LocalizedDisplayName("ShEndDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ShEndDate { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Check Date
     		/// </summary>        
-    	    [DisplayName("ShCheckDate")]
+    	    [ResourceTool.LocalizedDisplayName("ShCheckDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ShCheckDate { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Pwd State
     		/// </summary>        
-    	    [DisplayName("ShPwdState")]
-            [MaxLength(1, ErrorMessage = "Sh Pwd State cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ShPwdState", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShPwdState { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Stop Right Start Date
     		/// </summary>        
-    	    [DisplayName("ShStopRightStartDate")]
+    	    [ResourceTool.LocalizedDisplayName("ShStopRightStartDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ShStopRightStartDate { get; set; }
     
     		    
     		/// <summary>
     		/// Sh Stop Right Enddate
     		/// </summary>        
-    	    [DisplayName("ShStopRightEnddate")]
+    	    [ResourceTool.LocalizedDisplayName("ShStopRightEnddate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ShStopRightEnddate { get; set; }
     
     		    

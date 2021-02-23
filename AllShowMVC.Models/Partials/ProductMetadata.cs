@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Pro No
     		/// </summary>        
-    	    [DisplayName("ProNo")]
-            [Required(ErrorMessage = "Pro No is required")]
+    	    [ResourceTool.LocalizedDisplayName("ProNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int ProNo { get; set; }
     
@@ -33,100 +33,100 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Sh No
     		/// </summary>        
-    	    [DisplayName("ShNo")]
+    	    [ResourceTool.LocalizedDisplayName("ShNo", typeof(AllShowResource))]
     		public Nullable<int> ShNo { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Class No
     		/// </summary>        
-    	    [DisplayName("ProClassNo")]
+    	    [ResourceTool.LocalizedDisplayName("ProClassNo", typeof(AllShowResource))]
     		public Nullable<int> ProClassNo { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Name
     		/// </summary>        
-    	    [DisplayName("ProName")]
-            [Required(ErrorMessage = "Pro Name is required")]
-            [MaxLength(20, ErrorMessage = "Pro Name cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ProName", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ProName { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Price
     		/// </summary>        
-    	    [DisplayName("ProPrice")]
-            [Required(ErrorMessage = "Pro Price is required")]
+    	    [ResourceTool.LocalizedDisplayName("ProPrice", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public int ProPrice { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Statement
     		/// </summary>        
-    	    [DisplayName("ProStatement")]
-            [MaxLength(200, ErrorMessage = "Pro Statement cannot be longer than 200 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ProStatement", typeof(AllShowResource))]
+            [MaxLength(200, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ProStatement { get; set; }
     
     		    
     		/// <summary>
     		/// Pro State
     		/// </summary>        
-    	    [DisplayName("ProState")]
-            [MaxLength(1, ErrorMessage = "Pro State cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ProState", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ProState { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Pic1
     		/// </summary>        
-    	    [DisplayName("ProPic1")]
-            [MaxLength(1000, ErrorMessage = "Pro Pic1 cannot be longer than 1000 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ProPic1", typeof(AllShowResource))]
+            [MaxLength(1000, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ProPic1 { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Pic2
     		/// </summary>        
-    	    [DisplayName("ProPic2")]
-            [MaxLength(1000, ErrorMessage = "Pro Pic2 cannot be longer than 1000 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ProPic2", typeof(AllShowResource))]
+            [MaxLength(1000, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ProPic2 { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Pic3
     		/// </summary>        
-    	    [DisplayName("ProPic3")]
-            [MaxLength(1000, ErrorMessage = "Pro Pic3 cannot be longer than 1000 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ProPic3", typeof(AllShowResource))]
+            [MaxLength(1000, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ProPic3 { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Create Date
     		/// </summary>        
-    	    [DisplayName("ProCreateDate")]
+    	    [ResourceTool.LocalizedDisplayName("ProCreateDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ProCreateDate { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Update Date
     		/// </summary>        
-    	    [DisplayName("ProUpdateDate")]
+    	    [ResourceTool.LocalizedDisplayName("ProUpdateDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ProUpdateDate { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Offshelf Date
     		/// </summary>        
-    	    [DisplayName("ProOffshelfDate")]
+    	    [ResourceTool.LocalizedDisplayName("ProOffshelfDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> ProOffshelfDate { get; set; }
     
     		    
     		/// <summary>
     		/// Pro Pop
     		/// </summary>        
-    	    [DisplayName("ProPop")]
-            [MaxLength(1, ErrorMessage = "Pro Pop cannot be longer than 1 characters")]
+    	    [ResourceTool.LocalizedDisplayName("ProPop", typeof(AllShowResource))]
+            [MaxLength(1, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ProPop { get; set; }
     
     		    

@@ -126,4 +126,7 @@
   <data name="MemEmail" xml:space="preserve">
     <value>Member Email</value>
   </data>
+  <data name="MemName" xml:space="preserve">
+    <value>Member Name</value>
+  </data>
 </root>

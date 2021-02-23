@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Authority No
     		/// </summary>        
-    	    [DisplayName("AuthorityNo")]
-            [Required(ErrorMessage = "Authority No is required")]
+    	    [ResourceTool.LocalizedDisplayName("AuthorityNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int AuthorityNo { get; set; }
     
@@ -33,9 +33,9 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Authority Name
     		/// </summary>        
-    	    [DisplayName("AuthorityName")]
-            [Required(ErrorMessage = "Authority Name is required")]
-            [MaxLength(40, ErrorMessage = "Authority Name cannot be longer than 40 characters")]
+    	    [ResourceTool.LocalizedDisplayName("AuthorityName", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(40, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string AuthorityName { get; set; }
     
     		    

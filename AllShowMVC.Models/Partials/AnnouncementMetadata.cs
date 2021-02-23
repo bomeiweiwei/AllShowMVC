@@ -1,5 +1,5 @@
-//using slnMyStudy.Common;
-//using slnMyStudy.Resource.App_GlobalResources;
+using AllShowMVC.Common;
+using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +24,8 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Announcement No
     		/// </summary>        
-    	    [DisplayName("AnnouncementNo")]
-            [Required(ErrorMessage = "Announcement No is required")]
+    	    [ResourceTool.LocalizedDisplayName("AnnouncementNo", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
     		public int AnnouncementNo { get; set; }
     
@@ -33,56 +33,56 @@ namespace AllShowMVC.Models
     		/// <summary>
     		/// Emp No
     		/// </summary>        
-    	    [DisplayName("EmpNo")]
+    	    [ResourceTool.LocalizedDisplayName("EmpNo", typeof(AllShowResource))]
     		public Nullable<int> EmpNo { get; set; }
     
     		    
     		/// <summary>
     		/// Announcement Type
     		/// </summary>        
-    	    [DisplayName("AnnouncementType")]
-            [Required(ErrorMessage = "Announcement Type is required")]
-            [MaxLength(20, ErrorMessage = "Announcement Type cannot be longer than 20 characters")]
+    	    [ResourceTool.LocalizedDisplayName("AnnouncementType", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string AnnouncementType { get; set; }
     
     		    
     		/// <summary>
     		/// Announcement Content
     		/// </summary>        
-    	    [DisplayName("AnnouncementContent")]
-            [Required(ErrorMessage = "Announcement Content is required")]
-            [MaxLength(300, ErrorMessage = "Announcement Content cannot be longer than 300 characters")]
+    	    [ResourceTool.LocalizedDisplayName("AnnouncementContent", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(300, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string AnnouncementContent { get; set; }
     
     		    
     		/// <summary>
     		/// Create Date
     		/// </summary>        
-    	    [DisplayName("CreateDate")]
-            [Required(ErrorMessage = "Create Date is required")]
+    	    [ResourceTool.LocalizedDisplayName("CreateDate", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime CreateDate { get; set; }
     
     		    
     		/// <summary>
     		/// Update Date
     		/// </summary>        
-    	    [DisplayName("UpdateDate")]
+    	    [ResourceTool.LocalizedDisplayName("UpdateDate", typeof(AllShowResource))]
     		public Nullable<System.DateTime> UpdateDate { get; set; }
     
     		    
     		/// <summary>
     		/// Start Date
     		/// </summary>        
-    	    [DisplayName("StartDate")]
-            [Required(ErrorMessage = "Start Date is required")]
+    	    [ResourceTool.LocalizedDisplayName("StartDate", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime StartDate { get; set; }
     
     		    
     		/// <summary>
     		/// End Date
     		/// </summary>        
-    	    [DisplayName("EndDate")]
-            [Required(ErrorMessage = "End Date is required")]
+    	    [ResourceTool.LocalizedDisplayName("EndDate", typeof(AllShowResource))]
+            [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
     		public System.DateTime EndDate { get; set; }
     
     		    
