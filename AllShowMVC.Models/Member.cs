@@ -33,8 +33,8 @@ namespace AllShowMVC.Models
         public string MemAccountState { get; set; }
         public string MemCheckNumber { get; set; }
         public System.DateTime MemCreateDate { get; set; }
-        public Nullable<System.DateTime> MemUudateDate { get; set; }
         public Nullable<System.DateTime> MemBirth { get; set; }
+        public Nullable<System.DateTime> MemUpdateDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavoriteShopList> FavoriteShopList { get; set; }

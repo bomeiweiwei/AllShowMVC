@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AllShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AllShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertisement">
           <Key>
             <PropertyRef Name="AdNo" />
@@ -91,7 +91,7 @@
           <Property Name="MemAccountState" Type="varchar" MaxLength="1" />
           <Property Name="MemCheckNumber" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="MemCreateDate" Type="date" Nullable="false" />
-          <Property Name="MemUudateDate" Type="date" />
+          <Property Name="MemUpdateDate" Type="date" />
           <Property Name="MemBirth" Type="date" />
         </EntityType>
         <EntityType Name="MemberList">
@@ -192,7 +192,7 @@
           <Property Name="RecipientAddress" Type="varchar" MaxLength="50" />
           <Property Name="PayType" Type="varchar" MaxLength="1" />
         </EntityType>
-        <Association Name="FK__Advertise__EmpNo__3D5E1FD2">
+        <Association Name="FK__Advertise__EmpNo__29572725">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,7 +204,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Advertisem__ShNo__3E52440B">
+        <Association Name="FK__Advertisem__ShNo__2A4B4B5E">
           <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +216,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Announcem__EmpNo__30F848ED">
+        <Association Name="FK__Announcem__EmpNo__1CF15040">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Announcement" Type="Self.Announcement" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +228,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Authority__Autho__2D27B809">
+        <Association Name="FK__Authority__Autho__1920BF5C">
           <End Role="AuthorityFunction" Type="Self.AuthorityFunction" Multiplicity="1" />
           <End Role="Authority" Type="Self.Authority" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +240,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Authority__EmpNo__2E1BDC42">
+        <Association Name="FK__Authority__EmpNo__1A14E395">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Authority" Type="Self.Authority" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +252,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavoriteS__MemNo__4E88ABD4">
+        <Association Name="FK__FavoriteS__MemNo__3A81B327">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="FavoriteShopList" Type="Self.FavoriteShopList" Multiplicity="*" />
           <ReferentialConstraint>
@@ -264,7 +264,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavoriteSh__ShNo__4F7CD00D">
+        <Association Name="FK__FavoriteSh__ShNo__3B75D760">
           <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
           <End Role="FavoriteShopList" Type="Self.FavoriteShopList" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,7 +276,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MemberLis__MemNo__52593CB8">
+        <Association Name="FK__MemberLis__MemNo__3E52440B">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="MemberList" Type="Self.MemberList" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,7 +288,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderList__ProNo__5BE2A6F2">
+        <Association Name="FK__OrderList__ProNo__47DBAE45">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderList" Type="Self.OrderList" Multiplicity="*" />
           <ReferentialConstraint>
@@ -300,7 +300,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderList__Shopo__5AEE82B9">
+        <Association Name="FK__OrderList__Shopo__46E78A0C">
           <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="1" />
           <End Role="OrderList" Type="Self.OrderList" Multiplicity="*" />
           <ReferentialConstraint>
@@ -312,7 +312,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__ProClas__47DBAE45">
+        <Association Name="FK__Product__ProClas__33D4B598">
           <End Role="ProductClass" Type="Self.ProductClass" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -324,7 +324,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__ShNo__46E78A0C">
+        <Association Name="FK__Product__ShNo__32E0915F">
           <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -336,7 +336,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductCla__ShNo__440B1D61">
+        <Association Name="FK__ProductCla__ShNo__300424B4">
           <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
           <End Role="ProductClass" Type="Self.ProductClass" Multiplicity="*" />
           <ReferentialConstraint>
@@ -348,7 +348,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Shop__EmpNo__3A81B327">
+        <Association Name="FK__Shop__EmpNo__267ABA7A">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
           <ReferentialConstraint>
@@ -360,7 +360,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShopOrder__Order__5812160E">
+        <Association Name="FK__ShopOrder__Order__440B1D61">
           <End Role="MemberList" Type="Self.MemberList" Multiplicity="0..1" />
           <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -372,7 +372,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShopOrder__ShNo__571DF1D5">
+        <Association Name="FK__ShopOrder__ShNo__4316F928">
           <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
           <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -399,73 +399,72 @@
           <EntitySet Name="ShClass" EntityType="Self.ShClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShopOrder" EntityType="Self.ShopOrder" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Advertise__EmpNo__3D5E1FD2" Association="Self.FK__Advertise__EmpNo__3D5E1FD2">
+          <AssociationSet Name="FK__Advertise__EmpNo__29572725" Association="Self.FK__Advertise__EmpNo__29572725">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Advertisement" EntitySet="Advertisement" />
           </AssociationSet>
-          <AssociationSet Name="FK__Advertisem__ShNo__3E52440B" Association="Self.FK__Advertisem__ShNo__3E52440B">
+          <AssociationSet Name="FK__Advertisem__ShNo__2A4B4B5E" Association="Self.FK__Advertisem__ShNo__2A4B4B5E">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="Advertisement" EntitySet="Advertisement" />
           </AssociationSet>
-          <AssociationSet Name="FK__Announcem__EmpNo__30F848ED" Association="Self.FK__Announcem__EmpNo__30F848ED">
+          <AssociationSet Name="FK__Announcem__EmpNo__1CF15040" Association="Self.FK__Announcem__EmpNo__1CF15040">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Announcement" EntitySet="Announcement" />
           </AssociationSet>
-          <AssociationSet Name="FK__Authority__Autho__2D27B809" Association="Self.FK__Authority__Autho__2D27B809">
+          <AssociationSet Name="FK__Authority__Autho__1920BF5C" Association="Self.FK__Authority__Autho__1920BF5C">
             <End Role="AuthorityFunction" EntitySet="AuthorityFunction" />
             <End Role="Authority" EntitySet="Authority" />
           </AssociationSet>
-          <AssociationSet Name="FK__Authority__EmpNo__2E1BDC42" Association="Self.FK__Authority__EmpNo__2E1BDC42">
+          <AssociationSet Name="FK__Authority__EmpNo__1A14E395" Association="Self.FK__Authority__EmpNo__1A14E395">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Authority" EntitySet="Authority" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavoriteS__MemNo__4E88ABD4" Association="Self.FK__FavoriteS__MemNo__4E88ABD4">
+          <AssociationSet Name="FK__FavoriteS__MemNo__3A81B327" Association="Self.FK__FavoriteS__MemNo__3A81B327">
             <End Role="Member" EntitySet="Member" />
             <End Role="FavoriteShopList" EntitySet="FavoriteShopList" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavoriteSh__ShNo__4F7CD00D" Association="Self.FK__FavoriteSh__ShNo__4F7CD00D">
+          <AssociationSet Name="FK__FavoriteSh__ShNo__3B75D760" Association="Self.FK__FavoriteSh__ShNo__3B75D760">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="FavoriteShopList" EntitySet="FavoriteShopList" />
           </AssociationSet>
-          <AssociationSet Name="FK__MemberLis__MemNo__52593CB8" Association="Self.FK__MemberLis__MemNo__52593CB8">
+          <AssociationSet Name="FK__MemberLis__MemNo__3E52440B" Association="Self.FK__MemberLis__MemNo__3E52440B">
             <End Role="Member" EntitySet="Member" />
             <End Role="MemberList" EntitySet="MemberList" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderList__ProNo__5BE2A6F2" Association="Self.FK__OrderList__ProNo__5BE2A6F2">
+          <AssociationSet Name="FK__OrderList__ProNo__47DBAE45" Association="Self.FK__OrderList__ProNo__47DBAE45">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderList" EntitySet="OrderList" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderList__Shopo__5AEE82B9" Association="Self.FK__OrderList__Shopo__5AEE82B9">
+          <AssociationSet Name="FK__OrderList__Shopo__46E78A0C" Association="Self.FK__OrderList__Shopo__46E78A0C">
             <End Role="ShopOrder" EntitySet="ShopOrder" />
             <End Role="OrderList" EntitySet="OrderList" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__ProClas__47DBAE45" Association="Self.FK__Product__ProClas__47DBAE45">
+          <AssociationSet Name="FK__Product__ProClas__33D4B598" Association="Self.FK__Product__ProClas__33D4B598">
             <End Role="ProductClass" EntitySet="ProductClass" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__ShNo__46E78A0C" Association="Self.FK__Product__ShNo__46E78A0C">
+          <AssociationSet Name="FK__Product__ShNo__32E0915F" Association="Self.FK__Product__ShNo__32E0915F">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductCla__ShNo__440B1D61" Association="Self.FK__ProductCla__ShNo__440B1D61">
+          <AssociationSet Name="FK__ProductCla__ShNo__300424B4" Association="Self.FK__ProductCla__ShNo__300424B4">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="ProductClass" EntitySet="ProductClass" />
           </AssociationSet>
-          <AssociationSet Name="FK__Shop__EmpNo__3A81B327" Association="Self.FK__Shop__EmpNo__3A81B327">
+          <AssociationSet Name="FK__Shop__EmpNo__267ABA7A" Association="Self.FK__Shop__EmpNo__267ABA7A">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShopOrder__Order__5812160E" Association="Self.FK__ShopOrder__Order__5812160E">
+          <AssociationSet Name="FK__ShopOrder__Order__440B1D61" Association="Self.FK__ShopOrder__Order__440B1D61">
             <End Role="MemberList" EntitySet="MemberList" />
             <End Role="ShopOrder" EntitySet="ShopOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShopOrder__ShNo__571DF1D5" Association="Self.FK__ShopOrder__ShNo__571DF1D5">
+          <AssociationSet Name="FK__ShopOrder__ShNo__4316F928" Association="Self.FK__ShopOrder__ShNo__4316F928">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="ShopOrder" EntitySet="ShopOrder" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AllShowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -567,10 +566,10 @@
           <Property Name="MemAccountState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="MemCheckNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MemCreateDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="MemUudateDate" Type="DateTime" Precision="0" />
           <Property Name="MemBirth" Type="DateTime" Precision="0" />
           <NavigationProperty Name="FavoriteShopList" Relationship="Self.FK__FavoriteS__MemNo__4E88ABD4" FromRole="Member" ToRole="FavoriteShopList" />
           <NavigationProperty Name="MemberList" Relationship="Self.FK__MemberLis__MemNo__52593CB8" FromRole="Member" ToRole="MemberList" />
+          <Property Name="MemUpdateDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="MemberList">
           <Key>
@@ -1043,6 +1042,7 @@
           <EntitySetMapping Name="Member">
             <EntityTypeMapping TypeName="AllShowModel.Member">
               <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="MemUpdateDate" ColumnName="MemUpdateDate" />
                 <ScalarProperty Name="MemNo" ColumnName="MemNo" />
                 <ScalarProperty Name="MemEmail" ColumnName="MemEmail" />
                 <ScalarProperty Name="MemPwd" ColumnName="MemPwd" />
@@ -1055,7 +1055,6 @@
                 <ScalarProperty Name="MemAccountState" ColumnName="MemAccountState" />
                 <ScalarProperty Name="MemCheckNumber" ColumnName="MemCheckNumber" />
                 <ScalarProperty Name="MemCreateDate" ColumnName="MemCreateDate" />
-                <ScalarProperty Name="MemUudateDate" ColumnName="MemUudateDate" />
                 <ScalarProperty Name="MemBirth" ColumnName="MemBirth" />
               </MappingFragment>
             </EntityTypeMapping>

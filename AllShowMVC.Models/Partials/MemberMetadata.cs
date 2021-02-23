@@ -126,17 +126,17 @@ namespace AllShowMVC.Models
     
     		    
     		/// <summary>
-    		/// Mem Uudate Date
-    		/// </summary>        
-    	    [ResourceTool.LocalizedDisplayName("MemUudateDate", typeof(AllShowResource))]
-    		public Nullable<System.DateTime> MemUudateDate { get; set; }
-    
-    		    
-    		/// <summary>
     		/// Mem Birth
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("MemBirth", typeof(AllShowResource))]
     		public Nullable<System.DateTime> MemBirth { get; set; }
+    
+    		    
+    		/// <summary>
+    		/// Mem Update Date
+    		/// </summary>        
+    	    [ResourceTool.LocalizedDisplayName("MemUpdateDate", typeof(AllShowResource))]
+    		public Nullable<System.DateTime> MemUpdateDate { get; set; }
     
     		    
     	}
