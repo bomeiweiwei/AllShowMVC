@@ -176,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\package-lock.json" />
     <Content Include="Scripts\package.json" />
   </ItemGroup>
   <ItemGroup>

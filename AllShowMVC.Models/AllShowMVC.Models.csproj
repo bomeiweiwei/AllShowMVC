@@ -85,6 +85,53 @@
     <Compile Include="OrderList.cs">
       <DependentUpon>AllShowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Partials\AdvertisementMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\AllShowMetaData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\AnnouncementMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\AuthorityFunctionMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\AuthorityMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\EmployeeMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\FavoriteShopListMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\MemberListMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\MemberMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\OrderListMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\ProductClassMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\ProductMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\ShClassMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\ShopMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\ShopOrderMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>AllShowModel.tt</DependentUpon>
     </Compile>
@@ -116,6 +163,10 @@
     <Content Include="AllShowModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AllShowModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Partials\AllShowMetaData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AllShowMetaData.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
