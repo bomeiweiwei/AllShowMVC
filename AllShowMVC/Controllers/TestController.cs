@@ -22,7 +22,8 @@ namespace AllShowMVC.Controllers
         public ActionResult Index()
         {
             //var query = testService.GetMembers();
-            var query = memberService.GetMembers();
+            //var query = memberService.GetMembers();
+            var query = memberService.GetAll();
             return View(query);
         }
 

@@ -8,17 +8,17 @@ using AllShowMVC.Dao;
 
 namespace AllShowMVC.Service
 {
-    public class MemberService
+    public class MemberService : BaseService<Member>
     {
-        readonly MemberDataOperation memberDataOperation;
-        public MemberService()
-        {
-            memberDataOperation = new MemberDataOperation();
-        }
+        //readonly MemberDataOperation memberDataOperation;
+        //public MemberService()
+        //{
+        //    memberDataOperation = new MemberDataOperation();
+        //}
 
-        public List<Member> GetMembers()
-        {
-            return memberDataOperation.GetObj.GetAll().ToList();
-        }
+        //public List<Member> GetMembers()
+        //{
+        //    return memberDataOperation.GetObj.GetAll().ToList();
+        //}
     }
 }
