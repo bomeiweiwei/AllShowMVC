@@ -53,7 +53,6 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("EmpPwd", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpPwd { get; set; }
     
     		    
@@ -62,7 +61,7 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("EmpEmail", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(40, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(256, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpEmail { get; set; }
     
     		    

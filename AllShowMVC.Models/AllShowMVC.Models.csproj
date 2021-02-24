@@ -67,6 +67,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AllShowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AllShowRoles.cs">
+      <DependentUpon>AllShowModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllShowUserClaims.cs">
+      <DependentUpon>AllShowModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllShowUserLogins.cs">
+      <DependentUpon>AllShowModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllShowUsers.cs">
+      <DependentUpon>AllShowModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Announcement.cs">
       <DependentUpon>AllShowModel.tt</DependentUpon>
     </Compile>
@@ -99,6 +111,18 @@
     <Compile Include="Partials\AllShowMetaData.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\AllShowRolesMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\AllShowUserClaimsMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\AllShowUserLoginsMetadata.cs">
+      <DependentUpon>AllShowMetaData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\AllShowUsersMetadata.cs">
       <DependentUpon>AllShowMetaData.tt</DependentUpon>
     </Compile>
     <Compile Include="Partials\AnnouncementMetadata.cs">

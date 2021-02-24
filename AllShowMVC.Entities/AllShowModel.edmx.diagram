@@ -35,6 +35,13 @@
         <AssociationConnector Association="AllShowModel.FK__Product__ShNo__46E78A0C" ManuallyRouted="false" />
         <AssociationConnector Association="AllShowModel.FK__ProductCla__ShNo__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="AllShowModel.FK__ShopOrder__ShNo__571DF1D5" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AllShowModel.AllShowRoles" Width="1.5" PointX="8.375" PointY="2.5" />
+        <EntityTypeShape EntityType="AllShowModel.AllShowUserClaims" Width="1.5" PointX="12.875" PointY="1" />
+        <EntityTypeShape EntityType="AllShowModel.AllShowUserLogins" Width="1.5" PointX="12.875" PointY="3.75" />
+        <EntityTypeShape EntityType="AllShowModel.AllShowUsers" Width="1.5" PointX="10.625" PointY="1.375" />
+        <AssociationConnector Association="AllShowModel.FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId" />
+        <AssociationConnector Association="AllShowModel.FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId" />
+        <AssociationConnector Association="AllShowModel.AllShowUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

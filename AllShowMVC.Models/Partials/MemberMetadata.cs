@@ -35,7 +35,7 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("MemEmail", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(60, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(256, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemEmail { get; set; }
     
     		    
@@ -44,7 +44,6 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("MemPwd", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string MemPwd { get; set; }
     
     		    

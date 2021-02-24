@@ -39,5 +39,9 @@ namespace AllShowMVC.Models
         public virtual DbSet<ShClass> ShClass { get; set; }
         public virtual DbSet<Shop> Shop { get; set; }
         public virtual DbSet<ShopOrder> ShopOrder { get; set; }
+        public virtual DbSet<AllShowRoles> AllShowRoles { get; set; }
+        public virtual DbSet<AllShowUserClaims> AllShowUserClaims { get; set; }
+        public virtual DbSet<AllShowUserLogins> AllShowUserLogins { get; set; }
+        public virtual DbSet<AllShowUsers> AllShowUsers { get; set; }
     }
 }

@@ -21,6 +21,57 @@
           <Property Name="AdURL" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="AdCheckState" Type="varchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="AllShowRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AllShowUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AllShowUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AllShowUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AllShowUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="Announcement">
           <Key>
             <PropertyRef Name="AnnouncementNo" />
@@ -57,8 +108,8 @@
           <Property Name="EmpNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmpName" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="EmpAccount" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="EmpPwd" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="EmpEmail" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="EmpPwd" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmpEmail" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="EmpSex" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="EmpBirth" Type="date" Nullable="false" />
           <Property Name="EmpTel" Type="varchar" MaxLength="10" Nullable="false" />
@@ -80,8 +131,8 @@
             <PropertyRef Name="MemNo" />
           </Key>
           <Property Name="MemNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MemEmail" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="MemPwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MemEmail" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="MemPwd" Type="nvarchar(max)" Nullable="false" />
           <Property Name="MemDiminutive" Type="varchar" MaxLength="40" />
           <Property Name="MemName" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="MemSex" Type="varchar" MaxLength="1" Nullable="false" />
@@ -155,12 +206,12 @@
           <Property Name="ShName" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ShClassNo" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="ShAccount" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ShPwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShPwd" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ShBoss" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="ShContact" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="ShAddress" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="ShTel" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="ShEmail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ShEmail" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="ShAbout" Type="varchar" MaxLength="300" />
           <Property Name="ShLogoPic" Type="varchar" MaxLength="1000" />
           <Property Name="ShUrl" Type="varchar" MaxLength="50" Nullable="false" />
@@ -384,8 +435,69 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId">
+          <End Role="AllShowUsers" Type="Self.AllShowUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AllShowUserClaims" Type="Self.AllShowUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllShowUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AllShowUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId">
+          <End Role="AllShowUsers" Type="Self.AllShowUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AllShowUserLogins" Type="Self.AllShowUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllShowUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AllShowUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AllShowUserRoles_dbo_AllShowRoles_RoleId">
+          <End Role="AllShowRoles" Type="Self.AllShowRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AllShowUserRoles" Type="Self.AllShowUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllShowRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AllShowUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AllShowUserRoles_dbo_AllShowUsers_UserId">
+          <End Role="AllShowUsers" Type="Self.AllShowUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AllShowUserRoles" Type="Self.AllShowUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllShowUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AllShowUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AllShowModelStoreContainer">
           <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllShowRoles" EntityType="Self.AllShowRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllShowUserClaims" EntityType="Self.AllShowUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllShowUserLogins" EntityType="Self.AllShowUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllShowUserRoles" EntityType="Self.AllShowUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllShowUsers" EntityType="Self.AllShowUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Authority" EntityType="Self.Authority" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuthorityFunction" EntityType="Self.AuthorityFunction" Schema="dbo" store:Type="Tables" />
@@ -463,6 +575,22 @@
             <End Role="Shop" EntitySet="Shop" />
             <End Role="ShopOrder" EntitySet="ShopOrder" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId" Association="Self.FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId">
+            <End Role="AllShowUsers" EntitySet="AllShowUsers" />
+            <End Role="AllShowUserClaims" EntitySet="AllShowUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId" Association="Self.FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId">
+            <End Role="AllShowUsers" EntitySet="AllShowUsers" />
+            <End Role="AllShowUserLogins" EntitySet="AllShowUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AllShowUserRoles_dbo_AllShowRoles_RoleId" Association="Self.FK_dbo_AllShowUserRoles_dbo_AllShowRoles_RoleId">
+            <End Role="AllShowRoles" EntitySet="AllShowRoles" />
+            <End Role="AllShowUserRoles" EntitySet="AllShowUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AllShowUserRoles_dbo_AllShowUsers_UserId" Association="Self.FK_dbo_AllShowUserRoles_dbo_AllShowUsers_UserId">
+            <End Role="AllShowUsers" EntitySet="AllShowUsers" />
+            <End Role="AllShowUserRoles" EntitySet="AllShowUserRoles" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -526,8 +654,8 @@
           <Property Name="EmpNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmpName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmpAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmpPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmpEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpPwd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmpEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmpSex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmpBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EmpTel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
@@ -555,8 +683,8 @@
             <PropertyRef Name="MemNo" />
           </Key>
           <Property Name="MemNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MemEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MemPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemPwd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MemDiminutive" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="MemName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MemSex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
@@ -641,12 +769,12 @@
           <Property Name="ShName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShClassNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ShPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShPwd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ShBoss" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShContact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShTel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ShEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ShAbout" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="ShLogoPic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="ShUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -958,7 +1086,104 @@
             <End Role="Shop" EntitySet="Shop" />
             <End Role="ShopOrder" EntitySet="ShopOrder" />
           </AssociationSet>
+          <EntitySet Name="AllShowRoles" EntityType="AllShowModel.AllShowRoles" />
+          <EntitySet Name="AllShowUserClaims" EntityType="AllShowModel.AllShowUserClaims" />
+          <EntitySet Name="AllShowUserLogins" EntityType="AllShowModel.AllShowUserLogins" />
+          <EntitySet Name="AllShowUsers" EntityType="AllShowModel.AllShowUsers" />
+          <AssociationSet Name="FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId" Association="AllShowModel.FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId">
+            <End Role="AllShowUsers" EntitySet="AllShowUsers" />
+            <End Role="AllShowUserClaims" EntitySet="AllShowUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId" Association="AllShowModel.FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId">
+            <End Role="AllShowUsers" EntitySet="AllShowUsers" />
+            <End Role="AllShowUserLogins" EntitySet="AllShowUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AllShowUserRoles" Association="AllShowModel.AllShowUserRoles">
+            <End Role="AllShowRoles" EntitySet="AllShowRoles" />
+            <End Role="AllShowUsers" EntitySet="AllShowUsers" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AllShowRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AllShowUsers" Relationship="AllShowModel.AllShowUserRoles" FromRole="AllShowRoles" ToRole="AllShowUsers" />
+        </EntityType>
+        <EntityType Name="AllShowUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AllShowUsers" Relationship="AllShowModel.FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId" FromRole="AllShowUserClaims" ToRole="AllShowUsers" />
+        </EntityType>
+        <EntityType Name="AllShowUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AllShowUsers" Relationship="AllShowModel.FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId" FromRole="AllShowUserLogins" ToRole="AllShowUsers" />
+        </EntityType>
+        <EntityType Name="AllShowUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AllShowUserClaims" Relationship="AllShowModel.FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId" FromRole="AllShowUsers" ToRole="AllShowUserClaims" />
+          <NavigationProperty Name="AllShowUserLogins" Relationship="AllShowModel.FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId" FromRole="AllShowUsers" ToRole="AllShowUserLogins" />
+          <NavigationProperty Name="AllShowRoles" Relationship="AllShowModel.AllShowUserRoles" FromRole="AllShowUsers" ToRole="AllShowRoles" />
+        </EntityType>
+        <Association Name="FK_dbo_AllShowUserClaims_dbo_AllShowUsers_UserId">
+          <End Type="AllShowModel.AllShowUsers" Role="AllShowUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="AllShowModel.AllShowUserClaims" Role="AllShowUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllShowUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AllShowUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AllShowUserLogins_dbo_AllShowUsers_UserId">
+          <End Type="AllShowModel.AllShowUsers" Role="AllShowUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="AllShowModel.AllShowUserLogins" Role="AllShowUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllShowUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AllShowUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AllShowUserRoles">
+          <End Type="AllShowModel.AllShowRoles" Role="AllShowRoles" Multiplicity="*" />
+          <End Type="AllShowModel.AllShowUsers" Role="AllShowUsers" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1163,6 +1388,59 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AllShowRoles">
+            <EntityTypeMapping TypeName="AllShowModel.AllShowRoles">
+              <MappingFragment StoreEntitySet="AllShowRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllShowUserClaims">
+            <EntityTypeMapping TypeName="AllShowModel.AllShowUserClaims">
+              <MappingFragment StoreEntitySet="AllShowUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllShowUserLogins">
+            <EntityTypeMapping TypeName="AllShowModel.AllShowUserLogins">
+              <MappingFragment StoreEntitySet="AllShowUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllShowUsers">
+            <EntityTypeMapping TypeName="AllShowModel.AllShowUsers">
+              <MappingFragment StoreEntitySet="AllShowUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AllShowUserRoles" TypeName="AllShowModel.AllShowUserRoles" StoreEntitySet="AllShowUserRoles">
+            <EndProperty Name="AllShowUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AllShowRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

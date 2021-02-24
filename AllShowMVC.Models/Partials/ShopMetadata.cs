@@ -77,7 +77,6 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("ShPwd", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShPwd { get; set; }
     
     		    
@@ -122,7 +121,7 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("ShEmail", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(30, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(256, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string ShEmail { get; set; }
     
     		    
