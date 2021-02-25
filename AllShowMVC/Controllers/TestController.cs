@@ -11,18 +11,14 @@ namespace AllShowMVC.Controllers
 {
     public class TestController : Controller
     {
-        readonly TestService testService;
-        MemberService memberService;
+        readonly MemberService memberService;
         public TestController()
         {
-            //testService = new TestService();
             memberService = new MemberService();
         }
         // GET: Test
         public ActionResult Index()
         {
-            //var query = testService.GetMembers();
-            //var query = memberService.GetMembers();
             var query = memberService.GetAll();
             return View(query);
         }

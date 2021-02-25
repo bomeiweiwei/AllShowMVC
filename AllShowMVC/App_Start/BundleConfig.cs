@@ -34,6 +34,12 @@ namespace AllShowMVC
                       "~/Scripts/node_modules/bootstrap/dist/css/bootstrap.css",
                       "~/Scripts/node_modules/bootstrap-vue/dist/bootstrap-vue.min.css",
                       "~/Content/site.css"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/DateTimePicker").Include(
+            //   "~/Scripts/node_modules/moment/dist/moment.js",
+            //   "~/Scripts/node_modules/bootstrap4-datetimepicker/build/js/bootstrap-datetimepicker.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/SharedJS").Include(
+               "~/Scripts/Custom/SharedScript.js"));
         }
     }
 }

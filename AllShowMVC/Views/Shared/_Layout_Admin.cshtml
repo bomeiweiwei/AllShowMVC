@@ -11,17 +11,17 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/vue")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/axios")    
+    @Scripts.Render("~/bundles/axios")
     <style>
         body {
             padding-top: 70px;
-        }   
+        }
     </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="@Url.Action("Index", new { Area = "" })">
+            <a class="navbar-brand" href="@Url.Action("Index", new { Area = "Admin" })">
                 <img src="~/images/bird.jpg" alt="logo" style="width:40px;">
             </a>
             <!-- 漢堡選單 -->
@@ -29,12 +29,17 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarItem">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home", new { Area = "" })">首頁</a>
-                    </li>
-                </ul>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    @Html.ActionLink("首頁", "Index", "Home", new { area = "Admin" }, new { @class = "nav-item nav-link active" })
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">人事管理</a>
+                        <div class="dropdown-menu">
+                            @Html.ActionLink("員工列表", "Index", "Home", new { area = "Admin" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("員工新增", "Create", "Employee", new { area = "Admin" }, new { @class = "dropdown-item" })
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>

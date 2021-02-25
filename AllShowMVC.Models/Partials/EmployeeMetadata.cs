@@ -35,7 +35,7 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("EmpName", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(256, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpName { get; set; }
     
     		    
@@ -44,7 +44,7 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("EmpAccount", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(20, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
+            [MaxLength(256, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpAccount { get; set; }
     
     		    
@@ -87,7 +87,6 @@ namespace AllShowMVC.Models
     		/// </summary>        
     	    [ResourceTool.LocalizedDisplayName("EmpTel", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
-            [MaxLength(10, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
     		public string EmpTel { get; set; }
     
     		    

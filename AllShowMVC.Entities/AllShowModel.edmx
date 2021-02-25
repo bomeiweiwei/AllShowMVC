@@ -106,13 +106,13 @@
             <PropertyRef Name="EmpNo" />
           </Key>
           <Property Name="EmpNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmpName" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="EmpAccount" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmpName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="EmpAccount" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="EmpPwd" Type="nvarchar(max)" Nullable="false" />
           <Property Name="EmpEmail" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="EmpSex" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="EmpBirth" Type="date" Nullable="false" />
-          <Property Name="EmpTel" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EmpTel" Type="nvarchar(max)" Nullable="false" />
           <Property Name="HireDate" Type="date" Nullable="false" />
           <Property Name="LeaveDate" Type="date" />
           <Property Name="EmpAccountState" Type="varchar" MaxLength="1" />
@@ -652,13 +652,13 @@
             <PropertyRef Name="EmpNo" />
           </Key>
           <Property Name="EmpNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmpName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmpAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmpAccount" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmpPwd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmpEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmpSex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmpBirth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="EmpTel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="LeaveDate" Type="DateTime" Precision="0" />
           <Property Name="EmpAccountState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />

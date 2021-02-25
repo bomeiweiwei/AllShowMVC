@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvertisementService.cs" />
+    <Compile Include="AnnouncementService.cs" />
+    <Compile Include="AuthorityFunctionService.cs" />
+    <Compile Include="AuthorityService.cs" />
     <Compile Include="BaseService.cs" />
+    <Compile Include="EmployeeService.cs" />
+    <Compile Include="FavoriteShopListService.cs" />
+    <Compile Include="MemberListService.cs" />
     <Compile Include="MemberService.cs" />
+    <Compile Include="OrderListService.cs" />
+    <Compile Include="ProductClassService.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShClassService.cs" />
+    <Compile Include="ShopOrderService.cs" />
+    <Compile Include="ShopService.cs" />
     <Compile Include="TestService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +75,9 @@
       <Project>{2bf04eb2-2e22-4230-8b5a-443991439b7c}</Project>
       <Name>AllShowMVC.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

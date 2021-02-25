@@ -1,0 +1,99 @@
+﻿@model AllShowMVC.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpAccount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpPwd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpPwd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpSex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpSex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HireDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpAccountState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpAccountState)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

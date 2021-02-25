@@ -181,6 +181,7 @@
     <Compile Include="ShopOrder.cs">
       <DependentUpon>AllShowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\VW_Employee.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AllShowMVC.Common\AllShowMVC.Common.csproj">

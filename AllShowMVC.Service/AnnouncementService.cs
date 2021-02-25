@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllShowMVC.Dao
+namespace AllShowMVC.Service
 {
-    public class MemberDataOperation : BaseDataOperation<Member>
+    public class AnnouncementService : BaseService<Announcement>
     {
     }
 }
