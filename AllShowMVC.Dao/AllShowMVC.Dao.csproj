@@ -60,6 +60,8 @@
     <Compile Include="BaseDataOperation.cs" />
     <Compile Include="IDataOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sql\BaseSqlDao.cs" />
+    <Compile Include="sql\EmployeeDao.cs" />
     <Compile Include="TestDao.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +82,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="sql\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

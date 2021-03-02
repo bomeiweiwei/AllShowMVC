@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<AllShowMVC.Models.Employee>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "員工列表";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>員工列表</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增員工", "Create", "Employees", null, new { Area = "Admin", @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -30,11 +30,29 @@
             @Html.DisplayFor(modelItem => item.EmpEmail)
         </td>       
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmpNo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmpNo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmpNo })
+            @Html.ActionLink("編輯", "Edit", "Employees", new { id = item.EmpNo }, new { Area = "Admin", @class = "btn btn-warning" }) |
+            @Html.ActionLink("詳細", "Details", "Employees", new { id = item.EmpNo }, new { Area = "Admin", @class = "btn btn-info" }) |
+            <a class="btn btn-danger" href="javascript:void(0)" onclick="Delete('@item.EmpNo',this)">刪除</a>
         </td>
     </tr>
 }
 
 </table>
+<script>
+    function Delete(id, obj) {
+        if (confirm("確定刪除該筆資料?")) {
+            var url = '@Url.Action("Delete", "Employees", new { area = "Admin"})';
+            $.ajax({
+                url: url,
+                data: { id: id },
+                type: 'POST',
+                async: false,
+                success: function (result) {
+                    alert("刪除成功");
+                    $(obj).closest("tr").remove();
+                }
+            });
+        } 
+    }
+</script>
+<script src="~/scripts/Admin/Employees/Index.js"></script>

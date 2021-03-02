@@ -1,18 +1,16 @@
-﻿@model AllShowMVC.Models.Employee
+﻿@model AllShowMVC.Models.ViewModel.VW_Employee
 
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Employees", new { area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Employee</h4>
+        <h4>編輯員工</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.EmpNo)
@@ -26,41 +24,80 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EmpAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.HiddenFor(model => model.EmpAccount)
+            @*@Html.LabelFor(model => model.EmpAccount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EmpAccount, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EmpAccount, "", new { @class = "text-danger" })
+            </div>*@
+        </div>
+
+        <div class="form-group">
+            @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="ChangePwd" name="ChangePwd" value="true" 
+                           @{
+                               if (Model.ChangePwd.HasValue && Model.ChangePwd.Value)
+                               {
+                                   @:checked
+                               }
+                           }/>
+                    <label for="ChangePwd" class="custom-control-label">修改密碼</label>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.EmpPwd, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EmpPwd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.Password("EmpPwd", "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EmpPwd, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EmpEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.HiddenFor(m => m.EmpEmail)
+            @*@Html.LabelFor(model => model.EmpEmail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EmpEmail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EmpEmail, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.EmpSex, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EmpSex, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmpSex, "", new { @class = "text-danger" })
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="EmpSex" value="0" id="EmpSex1">
+                    <label class="form-check-label" for="EmpSex1">
+                        女
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="EmpSex" value="1" id="EmpSex2" checked>
+                    <label class="form-check-label" for="EmpSex2">
+                        男
+                    </label>
+                </div>
+                @*@Html.EditorFor(model => model.EmpSex, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.EmpSex, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.EmpBirth, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EmpBirth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.Editor("EmpBirth", "DateTimeTemp", new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.EmpBirth, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.EmpBirth, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -76,7 +113,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HireDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.Editor("HireDate", "DateTimeTemp", new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -84,7 +122,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LeaveDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LeaveDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.LeaveDate, new { type = "date" })
+                @*@Html.EditorFor(model => model.LeaveDate, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.LeaveDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -92,19 +131,31 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EmpAccountState, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EmpAccountState, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="EmpAccountState" name="EmpAccountState" value="1" 
+                           @{
+                               if (Model.EmpAccountState == "1")
+                               {
+                                   @:checked
+                               }
+                           }/>
+                    <label for="EmpAccountState" class="custom-control-label">啟用</label>
+                </div>
+                @*@Html.EditorFor(model => model.EmpAccountState, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.EmpAccountState, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="編輯員工" class="btn btn-warning" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("回到列表", "Index", "Employees", null, new { Area = "Admin", @class = "btn btn-info" })
 </div>
+<script src="~/scripts/Admin/Employees/Edit.js"></script>
+

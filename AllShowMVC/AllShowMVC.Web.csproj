@@ -203,6 +203,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\bird.jpg" />
     <Content Include="Scripts\Admin\Employees\Create.js" />
+    <Content Include="Scripts\Admin\Employees\Edit.js" />
+    <Content Include="Scripts\Admin\Employees\Index.js" />
     <Content Include="Scripts\Custom\SharedScript.js" />
     <Content Include="Scripts\Home\index.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -243,7 +245,6 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Employees\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Index.cshtml" />

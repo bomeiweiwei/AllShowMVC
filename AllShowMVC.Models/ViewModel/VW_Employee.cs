@@ -26,5 +26,7 @@ namespace AllShowMVC.Models.ViewModel
         [Display(Name = "Confirm password")]
         [Compare("EmpPwd", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public bool? ChangePwd { get; set; }
     }
 }

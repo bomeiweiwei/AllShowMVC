@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<h2>Create</h2>
-
 @using (Html.BeginForm("Create", "Employees", new { area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) 
 {
     @Html.AntiForgeryToken()
@@ -35,6 +33,7 @@
             @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -114,13 +113,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="新增員工" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("回到列表", "Index", null, new { Area = "Admin", @class = "btn btn-info" })
 </div>
 <script src="~/scripts/Admin/Employees/Create.js"></script>

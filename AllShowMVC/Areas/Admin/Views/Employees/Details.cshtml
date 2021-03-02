@@ -5,10 +5,8 @@
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Employee</h4>
+    <h4>員工資訊</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,22 +15,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.EmpName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmpAccount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmpAccount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmpPwd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmpPwd)
         </dd>
 
         <dt>
@@ -48,7 +30,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EmpSex)
+            @{
+                if (Model.EmpSex == "0")
+                {
+                    @:女
+                }
+                else if (Model.EmpSex == "1")
+                {
+                    @:男
+                }
+            }
         </dd>
 
         <dt>
@@ -56,7 +47,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EmpBirth)
+            @Html.DisplayFor(model => model.EmpBirth, "DateTimeTemp")
         </dd>
 
         <dt>
@@ -72,7 +63,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HireDate)
+            @Html.DisplayFor(model => model.HireDate, "DateTimeTemp")
         </dd>
 
         <dt>
@@ -80,7 +71,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LeaveDate)
+            @Html.DisplayFor(model => model.LeaveDate, "DateTimeTemp")
         </dd>
 
         <dt>
@@ -88,12 +79,21 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EmpAccountState)
+            @{
+                if (Model.EmpAccountState == "1")
+                {
+                    @:啟用
+                }
+                else
+                {
+                    @:停用
+                }
+            }
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpNo }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", "Employees", new { id = Model.EmpNo }, new { Area = "Admin", @class = "btn btn-warning" }) |
+    @Html.ActionLink("回到列表", "Index", "Employees", null, new { Area = "Admin", @class = "btn btn-info" })
 </p>
