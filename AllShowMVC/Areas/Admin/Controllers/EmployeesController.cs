@@ -54,7 +54,7 @@ namespace AllShowMVC.Areas.Admin.Controllers
         {
             return View();
         }
-
+        /*
         // POST: Admin/Employees/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
@@ -123,7 +123,7 @@ namespace AllShowMVC.Areas.Admin.Controllers
             }
             return View(employee);
         }
-
+        */
         // GET: Admin/Employees/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-@using (Html.BeginForm("Create", "Employees", new { area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmCall" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -113,7 +113,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="新增員工" class="btn btn-primary" />
+                <input type="button" value="新增員工" class="btn btn-primary" id="btn_Submit"/>
             </div>
         </div>
     </div>
@@ -122,4 +122,29 @@
 <div>
     @Html.ActionLink("回到列表", "Index", null, new { Area = "Admin", @class = "btn btn-info" })
 </div>
+<script>
+    $(document).ready(function () {
+        $("#btn_Submit").click(function () {
+            var obj = $("#frmCall").serializeObject();
+
+            $.ajax({
+                url: '@Url.HttpRouteUrl("DefaultApi", new { controller= "Employees" })',
+                type: 'POST',
+                data: obj,
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Error');
+                },
+                success: function (data, textStatus, xhr) {
+                    //console.log(xhr.status);
+                },
+                complete: function (xhr, textStatus) {
+                    //console.log(xhr.status);
+                    if (xhr.status == 201) {
+                        location.href = '@Url.Action("Index", "Employees", new { Area = "Admin" })';
+                    }
+                }
+            });
+        });
+    });
+</script>
 <script src="~/scripts/Admin/Employees/Create.js"></script>

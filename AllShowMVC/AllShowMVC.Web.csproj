@@ -187,6 +187,9 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Areas\Factory\FactoryAreaRegistration.cs" />
+    <Compile Include="Areas\WebApi\Controllers\BaseApiController.cs" />
+    <Compile Include="Areas\WebApi\Controllers\EmployeesController.cs" />
+    <Compile Include="Areas\WebApi\WebApiAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -194,6 +197,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ApiReponse.cs" />
+    <Compile Include="Infrastructure\BaseReponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -232,6 +237,9 @@
     <Folder Include="Areas\Factory\Controllers\" />
     <Folder Include="Areas\Factory\Models\" />
     <Folder Include="Areas\Factory\Views\Shared\" />
+    <Folder Include="Areas\WebApi\Models\" />
+    <Folder Include="Areas\WebApi\Views\BaseApi\" />
+    <Folder Include="Areas\WebApi\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\node_modules\" />
     <Folder Include="Views\Base\" />
@@ -251,6 +259,7 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\WebApi\Views\web.config" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -10,49 +10,35 @@
 <p>
     @Html.ActionLink("新增員工", "Create", "Employees", null, new { Area = "Admin", @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.EmpName)
-        </th>        
-        <th>
-            @Html.DisplayNameFor(model => model.EmpEmail)
-        </th>        
-        <th></th>
-    </tr>
+<div id="app">
+    <table class="table table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.EmpName)</th>
+                <th>@Html.DisplayNameFor(model => model.EmpEmail)</th>
+                <th>@Html.DisplayNameFor(model => model.EmpBirth)</th>
+                <th>@Html.DisplayNameFor(model => model.EmpTel)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in EmployeeList">
+                <td class="table-active">{{item.EmpName}}</td>
+                <td>{{item.EmpEmail}}</td>
+                <td>{{item.EmpBirth}}</td>
+                <td>{{item.EmpTel}}</td>
+                <td>
+                    <button type="button" v-on:click="EditEmp(item.EmpNo)" class="btn btn-warning">編輯</button>
+                    <button type="button" v-on:click="DetailEmp(item.EmpNo)" class="btn btn-info">詳細</button>
+                    <button type="button" v-on:click="DeleteEmp(index,item.EmpNo)" class="btn btn-danger">刪除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmpName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmpEmail)
-        </td>       
-        <td>
-            @Html.ActionLink("編輯", "Edit", "Employees", new { id = item.EmpNo }, new { Area = "Admin", @class = "btn btn-warning" }) |
-            @Html.ActionLink("詳細", "Details", "Employees", new { id = item.EmpNo }, new { Area = "Admin", @class = "btn btn-info" }) |
-            <a class="btn btn-danger" href="javascript:void(0)" onclick="Delete('@item.EmpNo',this)">刪除</a>
-        </td>
-    </tr>
-}
-
-</table>
 <script>
-    function Delete(id, obj) {
-        if (confirm("確定刪除該筆資料?")) {
-            var url = '@Url.Action("Delete", "Employees", new { area = "Admin"})';
-            $.ajax({
-                url: url,
-                data: { id: id },
-                type: 'POST',
-                async: false,
-                success: function (result) {
-                    alert("刪除成功");
-                    $(obj).closest("tr").remove();
-                }
-            });
-        } 
-    }
+    var url = '@Url.Action(null, "Employees", new { Area = "Admin" })';
+    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "Employees" })/';   
 </script>
 <script src="~/scripts/Admin/Employees/Index.js"></script>

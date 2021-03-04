@@ -12,6 +12,12 @@
     @Scripts.Render("~/bundles/vue")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/axios")
+    <script>
+        var baseInstance = axios.create({
+        baseURL: window.location.origin
+        });
+    </script>
+    @Scripts.Render("~/bundles/SharedJS")
     <style>
         body {
             padding-top: 70px;
@@ -49,8 +55,7 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
         </footer>
-    </div>
-    @Scripts.Render("~/bundles/SharedJS")
+    </div>    
     @RenderSection("scripts", required: false)
 </body>
 </html>
