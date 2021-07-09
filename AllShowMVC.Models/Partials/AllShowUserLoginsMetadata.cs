@@ -3,6 +3,7 @@ using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace AllShowMVC.Models
@@ -28,6 +29,7 @@ namespace AllShowMVC.Models
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [MaxLength(128, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
+            [Column(Order = 2)]
     		public string LoginProvider { get; set; }
     
     		    
@@ -38,6 +40,7 @@ namespace AllShowMVC.Models
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [MaxLength(128, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
+            [Column(Order = 1)]
     		public string ProviderKey { get; set; }
     
     		    
@@ -48,6 +51,7 @@ namespace AllShowMVC.Models
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [MaxLength(128, ErrorMessageResourceName = "Field_MaxLength", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
+            [Column(Order = 0)]
     		public string UserId { get; set; }
     
     		    

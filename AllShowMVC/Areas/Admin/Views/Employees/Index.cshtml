@@ -29,7 +29,7 @@
                 <td>{{item.EmpTel}}</td>
                 <td>
                     <button type="button" v-on:click="EditEmp(item.EmpNo)" class="btn btn-warning">編輯</button>
-                    <button type="button" v-on:click="DetailEmp(item.EmpNo)" class="btn btn-info">詳細</button>
+                    <button type="button" v-on:click="EmpDetail(item.EmpNo)" class="btn btn-info">詳細</button>
                     <button type="button" v-on:click="DeleteEmp(index,item.EmpNo)" class="btn btn-danger">刪除</button>
                 </td>
             </tr>

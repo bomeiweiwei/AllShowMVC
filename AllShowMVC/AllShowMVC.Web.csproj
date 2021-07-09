@@ -101,6 +101,7 @@
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
@@ -185,10 +186,14 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShClassesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShopsController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Areas\Factory\FactoryAreaRegistration.cs" />
     <Compile Include="Areas\WebApi\Controllers\BaseApiController.cs" />
     <Compile Include="Areas\WebApi\Controllers\EmployeesController.cs" />
+    <Compile Include="Areas\WebApi\Controllers\ShClassesController.cs" />
+    <Compile Include="Areas\WebApi\Controllers\ShopsController.cs" />
     <Compile Include="Areas\WebApi\WebApiAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -199,8 +204,10 @@
     </Compile>
     <Compile Include="Infrastructure\ApiReponse.cs" />
     <Compile Include="Infrastructure\BaseReponse.cs" />
+    <Compile Include="MyWebView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WebViews\MyWebView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -210,6 +217,11 @@
     <Content Include="Scripts\Admin\Employees\Create.js" />
     <Content Include="Scripts\Admin\Employees\Edit.js" />
     <Content Include="Scripts\Admin\Employees\Index.js" />
+    <Content Include="Scripts\Admin\ShClass\Create.js" />
+    <Content Include="Scripts\Admin\ShClass\Edit.js" />
+    <Content Include="Scripts\Admin\ShClass\Index.js" />
+    <Content Include="Scripts\Admin\Shops\Create.js" />
+    <Content Include="Scripts\Admin\Shops\Index.js" />
     <Content Include="Scripts\Custom\SharedScript.js" />
     <Content Include="Scripts\Home\index.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -240,7 +252,6 @@
     <Folder Include="Areas\WebApi\Models\" />
     <Folder Include="Areas\WebApi\Views\BaseApi\" />
     <Folder Include="Areas\WebApi\Views\Shared\" />
-    <Folder Include="Models\" />
     <Folder Include="Scripts\node_modules\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
@@ -260,6 +271,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\WebApi\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shops\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Shops\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Shops\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shops\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ShClasses\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ShClasses\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ShClasses\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ShClasses\Index.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -274,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AllShowMVC.Common\AllShowMVC.Common.csproj">

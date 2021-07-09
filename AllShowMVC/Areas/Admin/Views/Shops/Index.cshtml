@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AllShowMVC.Models.Shop>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>廠商列表</h2>
+
+<p>
+    @Html.ActionLink("新增廠商", "Create", "Shops", null, new { Area = "Admin", @class = "btn btn-primary" })
+</p>
+<div id="app">
+    <table class="table table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ShThePic)</th>
+                <th>@Html.DisplayNameFor(model => model.ShName)</th>
+                <th>@Html.DisplayNameFor(model => model.ShClassNo)</th>
+                <th>@Html.DisplayNameFor(model => model.ShBoss)</th>
+                <th>@Html.DisplayNameFor(model => model.ShContact)</th>
+                <th>@Html.DisplayNameFor(model => model.ShAddress)</th>
+                <th>@Html.DisplayNameFor(model => model.ShTel)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in ShopList">
+                <td class="table-active">{{item.ShThePic}}</td>
+                <td>{{item.ShName}}</td>
+                <td>{{item.ShClassNo}}</td>
+                <td>{{item.ShBoss}}</td>
+                <td>{{item.ShContact}}</td>
+                <td>{{item.ShAddress}}</td>
+                <td>{{item.ShTel}}</td>
+                <td>
+                    <button type="button" v-on:click="EditEmp(item.ShNo)" class="btn btn-warning">編輯</button>
+                    <button type="button" v-on:click="EmpDetail(item.ShNo)" class="btn btn-info">詳細</button>
+                    <button type="button" v-on:click="DeleteEmp(index,item.ShNo)" class="btn btn-danger">刪除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    var url = '@Url.Action(null, "Shops", new { Area = "Admin" })';
+    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "Shops" })/';
+</script>
+<script src="~/scripts/Admin/Shops/Index.js"></script>

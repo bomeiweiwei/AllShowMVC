@@ -1,0 +1,161 @@
+﻿@model AllShowMVC.Models.ViewModel.VW_Shop
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<form method="post" action="" id="frmCall" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+
+        <div id="app">
+            <div class="img-thumbnail clearfix col-md-6 col-12" style="padding:20px">
+                <h4 class="bg-primary rounded text-center text-white" style="padding:10px">商店新增</h4>
+                <div class="form-group">
+                    <label for="EmpNo">@Html.DisplayNameFor(model => model.EmpNo)</label>
+                    @*@Html.DropDownList("EmpNo", null, htmlAttributes: new { @class = "form-control" })*@
+                    @Html.DropDownList("EmpNo", (IEnumerable<SelectListItem>)Model.EmployeeDDL, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="ShClassNo">@Html.DisplayNameFor(model => model.ShClassNo)</label>
+                    @*@Html.DropDownList("ShClassNo", null, htmlAttributes: new { @class = "form-control" })*@
+                    @Html.DropDownList("ShClassNo", (IEnumerable<SelectListItem>)Model.ShClassDDL, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="ShAccount">@Html.DisplayNameFor(model => model.ShAccount)</label>&nbsp;
+                    <input type="text" id="ShAccount" name="ShAccount" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShPwd">@Html.DisplayNameFor(model => model.ShPwd)</label>&nbsp;
+                    <input type="password" id="ShPwd" name="ShPwd" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div>
+                        <img v-if="ShThePicImg" :src="ShThePicImg" width="300" />
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" id="ShThePic" name="ShThePic" class="custom-file-label" v-on:change="handelFileUpload"/>
+                        <label for="ShThePic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShThePic)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <img v-if="ShLogoPicImg" :src="ShLogoPicImg" width="300" />
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" id="ShLogoPic" name="ShLogoPic" class="custom-file-label" v-on:change="handelFileUpload2" />
+                        <label for="ShLogoPic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShLogoPic)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ShName">@Html.DisplayNameFor(model => model.ShName)</label>&nbsp;
+                    <input type="text" id="ShName" name="ShName" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShBoss">@Html.DisplayNameFor(model => model.ShBoss)</label>&nbsp;
+                    <input type="text" id="ShBoss" name="ShBoss" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShContact">@Html.DisplayNameFor(model => model.ShContact)</label>&nbsp;
+                    <input type="text" id="ShContact" name="ShContact" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShAddress">@Html.DisplayNameFor(model => model.ShAddress)</label>&nbsp;
+                    <input type="text" id="ShAddress" name="ShAddress" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShTel">@Html.DisplayNameFor(model => model.ShTel)</label>&nbsp;
+                    <input type="text" id="ShTel" name="ShTel" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShEmail">@Html.DisplayNameFor(model => model.ShEmail)</label>&nbsp;
+                    <input type="text" id="ShEmail" name="ShEmail" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShAbout">@Html.DisplayNameFor(model => model.ShAbout)</label>&nbsp;
+                    <input type="text" id="ShAbout" name="ShAbout" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShUrl">@Html.DisplayNameFor(model => model.ShUrl)</label>&nbsp;
+                    <input type="text" id="ShUrl" name="ShUrl" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="ShPopShop" name="ShPopShop" />
+                        <label for="ShPopShop" class="custom-control-label">熱門商店</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ShStartDate">@Html.DisplayNameFor(model => model.ShStartDate)</label>&nbsp;
+                    <input type="date" id="ShStartDate" name="ShStartDate" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShEndDate">@Html.DisplayNameFor(model => model.ShEndDate)</label>&nbsp;
+                    <input type="date" id="ShEndDate" name="ShEndDate" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShCheckDate">@Html.DisplayNameFor(model => model.ShCheckDate)</label>&nbsp;
+                    <input type="date" id="ShCheckDate" name="ShCheckDate" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="ShPwdState" name="ShPwdState" />
+                        <label for="ShPwdState" class="custom-control-label">密碼鎖定</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ShStopRightStartDate">@Html.DisplayNameFor(model => model.ShStopRightStartDate)</label>&nbsp;
+                    <input type="date" id="ShStopRightStartDate" name="ShStopRightStartDate" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ShStopRightEnddate">@Html.DisplayNameFor(model => model.ShStopRightEnddate)</label>&nbsp;
+                    <input type="date" id="ShStopRightEnddate" name="ShStopRightEnddate" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="ShCheckState" name="ShCheckState" />
+                        <label for="ShCheckState" class="custom-control-label">商店啟用</label>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="ShAdState" name="ShAdState" />
+                        <label for="ShAdState" class="custom-control-label">廣告啟用</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ShAdTitle">@Html.DisplayNameFor(model => model.ShAdTitle)</label>
+                    <input type="text" id="ShAdTitle" name="ShAdTitle" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div>
+                        <img v-if="ShAdPicImg" :src="ShAdPicImg" width="300" />
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" id="ShAdPic" name="ShAdPic" class="custom-file-label" v-on:change="handelFileUpload3"/>
+                        <label for="ShAdPic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShAdPic)</label>
+                    </div>
+                </div>
+
+                <p>
+                    @*<input type="submit" value="上架" class="btn btn-success" />*@
+                </p>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div>
+    @Html.ActionLink("回到列表", "Index", null, new { Area = "Admin", @class = "btn btn-info" })
+</div>
+<script>
+    var url = '@Url.Action("Index", "Shops", new { Area = "Admin" })';
+    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "Shops" })/';
+</script>
+<script src="~/scripts/Admin/Shops/Create.js"></script>

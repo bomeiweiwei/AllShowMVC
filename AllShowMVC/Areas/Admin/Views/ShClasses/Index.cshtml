@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AllShowMVC.Models.ShClass>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>商店類別列表</h2>
+
+<p>
+    @Html.ActionLink("新增商店類別", "Create", "ShClasses", null, new { Area = "Admin", @class = "btn btn-primary" })
+</p>
+<div id="app">
+    <table class="table table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ShClassName)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in ShClassList">
+                <td class="table-active">{{item.ShClassName}}</td>
+                <td>
+                    <button type="button" v-on:click="EditShClass(item.ShClassNo)" class="btn btn-warning">編輯</button>
+                    <button type="button" v-on:click="ShClassDetail(item.ShClassNo)" class="btn btn-info">詳細</button>
+                    <button type="button" v-on:click="DeleteShClass(index,item.ShClassNo)" class="btn btn-danger">刪除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    var url = '@Url.Action(null, "ShClasses", new { Area = "Admin" })';
+    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "ShClasses" })/';
+</script>
+<script src="~/scripts/Admin/ShClass/Index.js"></script>

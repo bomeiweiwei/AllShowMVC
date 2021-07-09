@@ -1,0 +1,219 @@
+﻿@model AllShowMVC.Models.Shop
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Shop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShThePic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShThePic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShClassNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShClassNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShAccount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShPwd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShPwd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShBoss)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShBoss)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShAbout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShAbout)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShLogoPic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShLogoPic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShAdState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShAdState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShAdTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShAdTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShAdPic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShAdPic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShPopShop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShPopShop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShCheckState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShCheckState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShCheckDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShCheckDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShPwdState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShPwdState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShStopRightStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShStopRightStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShStopRightEnddate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShStopRightEnddate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.EmpName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ShNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -65,6 +65,18 @@ foreach (EntityType entity in
 	<#= Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#>class <#=code.Escape(entity) + short_suffix#>
 	{
 	<#
+        int keyCount = 0;
+        int keyRecord = 0;
+        // Loop through each primitive property of entity
+		foreach (EdmProperty edmProperty in entity.Properties.Where(p => 
+				  p.TypeUsage.EdmType is PrimitiveType && p.DeclaringType == entity))
+		{
+            if (ef.IsKey(edmProperty)) { 
+                keyCount++;
+            }
+        }
+        keyRecord = keyCount;
+
 		// Loop through each primitive property of entity
 		foreach (EdmProperty edmProperty in entity.Properties.Where(p => 
 				  p.TypeUsage.EdmType is PrimitiveType && p.DeclaringType == entity))
@@ -84,9 +96,18 @@ foreach (EntityType entity in
 		// Write string length annotation
 		WriteStringLengthAttribute(edmProperty);
 
-        if (ef.IsKey(edmProperty)) { 
-            WriteLine("{0}[Key]", CodeRegion.GetIndent(2));
-        } 
+        if(keyCount == 1){
+            if (ef.IsKey(edmProperty)) { 
+                WriteLine("{0}[Key]", CodeRegion.GetIndent(2));
+            } 
+        }
+        else if(keyCount > 1){
+            if (ef.IsKey(edmProperty)) { 
+                WriteLine("{0}[Key]", CodeRegion.GetIndent(2));
+                WriteLine("{0}[Column(Order = {1})]", CodeRegion.GetIndent(2),--keyRecord);
+            }
+        }
+
 	#>
 		<#=Accessibility.ForProperty(edmProperty)#> <#=code.Escape(edmProperty.TypeUsage)#> <#=code.Escape(edmProperty)#> { <#=Accessibility.ForGetter(edmProperty)#>get; <#=Accessibility.ForSetter(edmProperty)#>set; }
 
@@ -182,6 +203,7 @@ using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 <#=String.Join(String.Empty, extraUsings.Select(u => "using " + u + 
                      ";" + Environment.NewLine).ToArray())#>
 <#+ 

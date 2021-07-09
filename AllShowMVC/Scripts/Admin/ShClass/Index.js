@@ -1,22 +1,22 @@
 ﻿new Vue({
     el: '#app',
     data: {
-        EmployeeList: null
+        ShClassList: null
     },
     mounted() {
-        baseInstance.get('/api/Employees')
+        baseInstance.get('/api/ShClasses')
             .then(response => {
-                this.EmployeeList = response.data.Data;
+                this.ShClassList = response.data.Data;
             });
     },
     methods: {
-        EditEmp(id) {
+        EditShClass(id) {
             location.href = url + '/Edit/' + id;
         },
-        EmpDetail(id) {
+        ShClassDetail(id) {
             location.href = url + '/Details/' + id;
         },
-        DeleteEmp(index, id) {
+        DeleteShClass(index, id) {
             var that = this;
             if (confirm("確定刪除該筆資料?")) {
                 $.ajax({
@@ -24,7 +24,7 @@
                     type: 'DELETE',
                     success: function (data, textStatus, xhr) {
                         alert("刪除成功");
-                        that.EmployeeList.splice(index, 1);
+                        that.ShClassList.splice(index, 1);
                     }
                 });
             }

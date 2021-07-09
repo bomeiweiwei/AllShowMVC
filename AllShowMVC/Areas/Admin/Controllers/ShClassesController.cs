@@ -2,70 +2,66 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
-using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using AllShowMVC.Controllers;
 using AllShowMVC.Models;
-using AllShowMVC.Models.IdentityModel;
-using AllShowMVC.Models.ViewModel;
 using AllShowMVC.Service;
-using AutoMapper;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 
 namespace AllShowMVC.Areas.Admin.Controllers
 {
-    public class EmployeesController : BaseController
+    public class ShClassesController : BaseController
     {
-        readonly EmployeeService service;
-        public EmployeesController()
+        readonly ShClassService service;
+        public ShClassesController()
         {
-            service = new EmployeeService();
+            service = new ShClassService();
         }
 
+        // GET: Admin/ShClasses
         public ActionResult Index()
         {
             return View();
         }
 
+        // GET: Admin/ShClasses/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = service.FindOne(m => m.EmpNo == id);
-            if (employee == null)
+            ShClass shClass = service.FindOne(m => m.ShClassNo == id);
+            if (shClass == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View(shClass);
         }
 
+        // GET: Admin/ShClasses/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        // GET: Admin/ShClasses/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_Employee employee = service.GetEmployee(id.Value);
-            if (employee == null)
+            ShClass shClass = service.FindOne(m => m.ShClassNo == id);
+            if (shClass == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View(shClass);
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

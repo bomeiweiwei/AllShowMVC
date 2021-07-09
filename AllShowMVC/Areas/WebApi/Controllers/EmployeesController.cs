@@ -12,11 +12,13 @@ using System.Web.Mvc;
 using AllShowMVC.Infrastructure;
 using AllShowMVC.Models;
 using AllShowMVC.Models.IdentityModel;
+using AllShowMVC.Models.Validate;
 using AllShowMVC.Models.ViewModel;
 using AllShowMVC.Service;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json;
 
 namespace AllShowMVC.Areas.WebApi.Controllers
 {
@@ -46,7 +48,7 @@ namespace AllShowMVC.Areas.WebApi.Controllers
 
         // GET: api/Employees/5
         [System.Web.Http.HttpGet]
-        //[ResponseType(typeof(Employee))]
+        [ResponseType(typeof(Employee))]
         public IHttpActionResult GetEmployee(int id)
         {
             Employee employee = service.FindOne(m => m.EmpNo == id);
@@ -133,7 +135,7 @@ namespace AllShowMVC.Areas.WebApi.Controllers
         // POST: api/Employees
         [System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
-        //[ResponseType(typeof(Employee))]
+        [ResponseType(typeof(VW_Employee))]
         public async System.Threading.Tasks.Task<IHttpActionResult> PostEmployee(VW_Employee employee)
         {
             VW_Employee model = EncodeModel(employee);
@@ -143,7 +145,32 @@ namespace AllShowMVC.Areas.WebApi.Controllers
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                //var allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                var errorList = new List<ValidateObj>();
+                foreach (var modelStateKey in ModelState.Keys)
+                {
+                    var value = ModelState[modelStateKey];
+                    string msg = "";
+                    foreach (var error in value.Errors)
+                    {
+                        msg += error.ErrorMessage + " ";
+                    }
+                    //ModelState.AddModelError(modelStateKey, msg);
+                    errorList.Add(
+                        new ValidateObj
+                        {
+                            ValidateFiled = modelStateKey.Replace("employee.", ""),
+                            ValidateMessage = msg
+                        });
+                }
+                //foreach (var e in errorList)
+                //{
+                //    ModelState.AddModelError(e.ValidateFiled, e.ValidateMessage);
+                //}
+                var ModelStateErrors = ModelState.Where(x => x.Value.Errors.Count > 0)
+                    .ToDictionary(k => k.Key, k => k.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+                string message = JsonConvert.SerializeObject(errorList);
+                return BadRequest(message);
             }
 
             string hashPwd = UserManager.PasswordHasher.HashPassword(model.EmpPwd);
@@ -203,7 +230,7 @@ namespace AllShowMVC.Areas.WebApi.Controllers
 
         // DELETE: api/Employees/5
         [System.Web.Http.HttpDelete]
-        //[ResponseType(typeof(Employee))]
+        [ResponseType(typeof(Employee))]
         public async System.Threading.Tasks.Task<IHttpActionResult> DeleteEmployee(int id)
         {
             Employee employee = service.FindOne(m => m.EmpNo == id);

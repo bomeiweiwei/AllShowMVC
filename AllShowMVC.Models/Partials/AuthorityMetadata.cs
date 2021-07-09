@@ -3,6 +3,7 @@ using AllShowMVC.Resource.App_GlobalResources;
 using System; 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace AllShowMVC.Models
@@ -27,6 +28,7 @@ namespace AllShowMVC.Models
     	    [ResourceTool.LocalizedDisplayName("AuthorityNo", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
+            [Column(Order = 1)]
     		public int AuthorityNo { get; set; }
     
     		    
@@ -36,6 +38,7 @@ namespace AllShowMVC.Models
     	    [ResourceTool.LocalizedDisplayName("EmpNo", typeof(AllShowResource))]
             [Required(ErrorMessageResourceName = "Field_Required", ErrorMessageResourceType = typeof(AllShowResource))]
             [Key]
+            [Column(Order = 0)]
     		public int EmpNo { get; set; }
     
     		    

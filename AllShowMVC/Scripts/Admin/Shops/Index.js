@@ -1,12 +1,12 @@
 ﻿new Vue({
     el: '#app',
     data: {
-        EmployeeList: null
+        ShopList: null
     },
     mounted() {
-        baseInstance.get('/api/Employees')
+        baseInstance.get('/api/Shops')
             .then(response => {
-                this.EmployeeList = response.data.Data;
+                this.ShopList = response.data.Data;
             });
     },
     methods: {
@@ -24,7 +24,7 @@
                     type: 'DELETE',
                     success: function (data, textStatus, xhr) {
                         alert("刪除成功");
-                        that.EmployeeList.splice(index, 1);
+                        that.ShopList.splice(index, 1);
                     }
                 });
             }

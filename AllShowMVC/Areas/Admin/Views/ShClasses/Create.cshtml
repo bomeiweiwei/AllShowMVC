@@ -1,0 +1,39 @@
+﻿@model AllShowMVC.Models.ShClass
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmCall" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>新增商店類別</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShClassName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShClassName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShClassName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="新增商店類別" class="btn btn-primary" id="btn_Submit" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("回到列表", "Index", null, new { Area = "Admin", @class = "btn btn-info" })
+</div>
+<script>
+    var url = '@Url.Action("Index", "ShClasses", new { Area = "Admin" })';
+    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "ShClasses" })/';
+</script>
+<script src="~/scripts/Admin/ShClass/Create.js"></script>

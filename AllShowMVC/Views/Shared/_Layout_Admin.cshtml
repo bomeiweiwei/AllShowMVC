@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/vue")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/axios")
@@ -41,8 +42,18 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">人事管理</a>
                         <div class="dropdown-menu">
-                            @Html.ActionLink("員工列表", "Index", "Home", new { area = "Admin" }, new { @class = "dropdown-item" })
-                            @Html.ActionLink("員工新增", "Create", "Employee", new { area = "Admin" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("員工列表", "Index", "Employees", new { area = "Admin" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("員工新增", "Create", "Employees", new { area = "Admin" }, new { @class = "dropdown-item" })
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">商店管理</a>
+                        <div class="dropdown-menu">
+                            @Html.ActionLink("商店類別列表", "Index", "ShClasses", new { area = "Admin" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("商店類別新增", "Create", "ShClasses", new { area = "Admin" }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("商店列表", "Index", "Shops", new { area = "Admin" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("商店新增", "Create", "Shops", new { area = "Admin" }, new { @class = "dropdown-item" })
                         </div>
                     </div>
                 </div>
