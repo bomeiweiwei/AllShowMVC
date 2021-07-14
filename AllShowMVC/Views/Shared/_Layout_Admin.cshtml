@@ -15,13 +15,26 @@
     @Scripts.Render("~/bundles/axios")
     <script>
         var baseInstance = axios.create({
-        baseURL: window.location.origin
+            baseURL: window.location.origin
         });
+
+        var ResInformation = '@AllShowResource.Information';
+        var ResErrorMsg = '@AllShowResource.ErrorMsg';
+        var ResField_Require_InputMsg = '@AllShowResource.Field_Require_Input';
+        var ResDeleteConfirmMsg = '@AllShowResource.DeleteConfirmMsg';
+        var ResDeleteSuccessMsg = '@AllShowResource.DeleteSuccess';
+
+        var elemRequiredArr = [];
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     @Scripts.Render("~/bundles/SharedJS")
     <style>
         body {
             padding-top: 70px;
+        }
+
+        .txtRed {
+            color: red
         }
     </style>
 </head>
@@ -44,6 +57,13 @@
                         <div class="dropdown-menu">
                             @Html.ActionLink("員工列表", "Index", "Employees", new { area = "Admin" }, new { @class = "dropdown-item" })
                             @Html.ActionLink("員工新增", "Create", "Employees", new { area = "Admin" }, new { @class = "dropdown-item" })
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">權限管理</a>
+                        <div class="dropdown-menu">
+                            @Html.ActionLink("權限列表", "Index", "Authority", new { area = "Admin" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("權限新增", "Create", "Authority", new { area = "Admin" }, new { @class = "dropdown-item" })
                         </div>
                     </div>
                     <div class="nav-item dropdown">

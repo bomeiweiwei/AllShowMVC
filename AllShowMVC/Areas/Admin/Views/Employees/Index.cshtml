@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AllShowMVC.Models.Employee>
+﻿@model IEnumerable<Employee>
 
 @{
     ViewBag.Title = "員工列表";
@@ -25,7 +25,7 @@
             <tr v-for="(item,index) in EmployeeList">
                 <td class="table-active">{{item.EmpName}}</td>
                 <td>{{item.EmpEmail}}</td>
-                <td>{{item.EmpBirth}}</td>
+                <td>{{item.EmpBirth | dateFormat('YYYY/MM/DD')}}</td>
                 <td>{{item.EmpTel}}</td>
                 <td>
                     <button type="button" v-on:click="EditEmp(item.EmpNo)" class="btn btn-warning">編輯</button>

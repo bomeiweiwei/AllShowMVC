@@ -178,25 +178,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Class\Base\BaseApiController.cs" />
+    <Compile Include="App_Class\Base\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthorityController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShClassesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShopsController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Areas\Factory\FactoryAreaRegistration.cs" />
-    <Compile Include="Areas\WebApi\Controllers\BaseApiController.cs" />
+    <Compile Include="Areas\WebApi\Controllers\AuthorityController.cs" />
     <Compile Include="Areas\WebApi\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\WebApi\Controllers\ShClassesController.cs" />
     <Compile Include="Areas\WebApi\Controllers\ShopsController.cs" />
     <Compile Include="Areas\WebApi\WebApiAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,10 +212,15 @@
     <Compile Include="WebViews\MyWebView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Bootstrap4_Dialog\bootstrap-dialog.css" />
+    <Content Include="Content\Bootstrap4_Dialog\bootstrap-dialog.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\bird.jpg" />
+    <Content Include="Scripts\Admin\Authority\Create.js" />
+    <Content Include="Scripts\Admin\Authority\Edit.js" />
+    <Content Include="Scripts\Admin\Authority\Index.js" />
     <Content Include="Scripts\Admin\Employees\Create.js" />
     <Content Include="Scripts\Admin\Employees\Edit.js" />
     <Content Include="Scripts\Admin\Employees\Index.js" />
@@ -222,6 +229,8 @@
     <Content Include="Scripts\Admin\ShClass\Index.js" />
     <Content Include="Scripts\Admin\Shops\Create.js" />
     <Content Include="Scripts\Admin\Shops\Index.js" />
+    <Content Include="Scripts\Bootstrap4_Dialog\js\bootstrap-dialog.js" />
+    <Content Include="Scripts\Bootstrap4_Dialog\js\bootstrap-dialog.min.js" />
     <Content Include="Scripts\Custom\SharedScript.js" />
     <Content Include="Scripts\Home\index.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -279,6 +288,10 @@
     <Content Include="Areas\Admin\Views\ShClasses\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ShClasses\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ShClasses\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Authority\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Authority\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Authority\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Authority\Edit.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -290,6 +303,7 @@
     <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeTemp.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTimeTemp.cshtml" />
+    <Content Include="Scripts\Bootstrap4_Dialog\less\bootstrap-dialog.less" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

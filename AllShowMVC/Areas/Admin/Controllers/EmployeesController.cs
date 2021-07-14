@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
-using AllShowMVC.Controllers;
+using AllShowMVC.App_Class.Base;
 using AllShowMVC.Models;
 using AllShowMVC.Models.IdentityModel;
 using AllShowMVC.Models.ViewModel;

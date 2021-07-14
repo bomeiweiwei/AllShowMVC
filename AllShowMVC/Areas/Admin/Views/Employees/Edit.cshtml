@@ -1,4 +1,4 @@
-﻿@model AllShowMVC.Models.ViewModel.VW_Employee
+﻿@model VW_Employee
 
 @{
     ViewBag.Title = "Edit";
@@ -158,29 +158,8 @@
     @Html.ActionLink("回到列表", "Index", "Employees", null, new { Area = "Admin", @class = "btn btn-info" })
 </div>
 <script>
-    $(document).ready(function () {
-        $("#btn_Submit").click(function () {
-            var obj = $("#frmCall").serializeObject();
-
-            $.ajax({
-                url: '@Url.HttpRouteUrl("DefaultApi", new { controller= "Employees" })',
-                type: 'PUT',
-                data: obj,
-                error: function (xhr, textStatus, errorThrown) {
-                    alert('Error');
-                },
-                success: function (data, textStatus, xhr) {
-                    //console.log(xhr.status);
-                },
-                complete: function (xhr, textStatus) {
-                    //console.log(xhr.status);
-                    if (xhr.status == 200) {
-                        location.href = '@Url.Action("Index", "Employees", new { Area = "Admin" })';
-                    }
-                }
-            });
-        });
-    });
+    var url = '@Url.Action("Index", "Employees", new { Area = "Admin" })';
+    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "Employees" })/';
 </script>
 <script src="~/scripts/Admin/Employees/Edit.js"></script>
 

@@ -90,7 +90,13 @@ function getQueryStringObj(url) {
     }
     return query_string;
 }
-
+/*
+    函數：網站轉址
+    參數：
+        url => 要轉的位址
+        data => 帶入參數
+        isNewWindow => 是否另開視窗
+*/
 function RedirectPage(url, data, isNewWindow) {
     var form = $('<form></form>');
     $(form).hide().attr('method', 'post').attr('action', url);
@@ -105,4 +111,94 @@ function RedirectPage(url, data, isNewWindow) {
     //debugger;
     $(form).appendTo('body').submit();
     $(form).remove();
+}
+/*
+    函數：表單Submit to webapi
+    參數：
+        formName => 表單名稱
+        Method => POST、PUT
+        apiUrl => Web Api網址
+        url => 成功後導頁
+*/
+function BaseFormSubmit(formName, Method, apiUrl, url) {
+    var obj = $("#" + formName).serializeObject();
+    $.ajax({
+        url: apiUrl,
+        type: Method,
+        data: obj,
+        error: function (xhr, textStatus, errorThrown) {
+            var jsonResponse = JSON.parse(xhr.responseText);
+            var msg = jsonResponse.Message;
+            var errObj;
+            try {
+                errObj = $.parseJSON(msg);
+            } catch (e) {
+                errObj = '';
+            }
+            if (typeof errObj == "object") {
+                //設為object及Code代號為程式設定
+                if (errObj.hasOwnProperty('Code') && errObj.Code == 1) {
+                    var result = $.parseJSON('[' + errObj.Message + ']');
+                    for (var i = 0; i < result[0].length; i++) {
+                        $('span[data-valmsg-for="' + result[0][i].ValidateFiled + '"]').text(result[0][i].ValidateMessage);
+                        $('span[data-valmsg-for="' + result[0][i].ValidateFiled + '"]').removeClass().addClass("field-validation-error").addClass("txtRed");
+                        $('span[data-valmsg-for="' + result[0][i].ValidateFiled + '"]').show();
+                    }
+                }
+                else {
+                    ShowErrorMessage(ResErrorMsg);
+                }
+            } else if (typeof errObj == "string") {
+                //ShowErrorMessage(msg);
+                ShowErrorMessage(ResErrorMsg);
+            }
+        },
+        success: function (data, textStatus, xhr) {
+        },
+        complete: function (xhr, textStatus) {
+            if (xhr.status == 200 || xhr.status == 201) {
+                location.href = url;
+            }
+        }
+    });
+}
+/*
+    函數：顯示錯誤訊息
+    參數：
+        msg => 訊息
+*/
+function ShowErrorMessage(msg) {
+    var dialog = new BootstrapDialog({
+        title: ResInformation,
+        message: function (dialog) {
+            var $message = $('<div>' + msg + '</div>');
+            return $message;
+        },
+        closable: true
+    });
+    dialog.realize();
+    dialog.getModalHeader().css('background-color', '#FF0000');
+    dialog.open();
+}
+/*
+    函數：新增需要動態驗證的欄位
+*/
+function ElementsValidAdd() {
+    var errMsg = ResField_Require_InputMsg;
+    elemRequiredArr.forEach(function (item) {
+        $("#" + item).rules("add", {
+            required: true,
+            messages: {
+                required: errMsg
+            }
+        });
+    });
+}
+/*
+    函數：刪除需要動態驗證的欄位
+*/
+function ElementsValidRemove() {
+    elemRequiredArr.forEach(function (item) {
+        $("#" + item).rules("remove");
+    });
 }

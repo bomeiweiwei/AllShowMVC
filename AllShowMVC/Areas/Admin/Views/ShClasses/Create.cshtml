@@ -1,4 +1,4 @@
-﻿@model AllShowMVC.Models.ShClass
+﻿@model ShClass
 
 @{
     ViewBag.Title = "Create";
@@ -32,8 +32,11 @@
 <div>
     @Html.ActionLink("回到列表", "Index", null, new { Area = "Admin", @class = "btn btn-info" })
 </div>
-<script>
-    var url = '@Url.Action("Index", "ShClasses", new { Area = "Admin" })';
-    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "ShClasses" })/';
-</script>
-<script src="~/scripts/Admin/ShClass/Create.js"></script>
+
+@section scripts{
+    <script>
+            var url = '@Url.Action("Index", "ShClasses", new { Area = "Admin" })';
+            var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "ShClasses" })/';
+    </script>
+    <script src="~/scripts/Admin/ShClass/Create.js"></script>
+}

@@ -18,12 +18,12 @@
         },
         DeleteShClass(index, id) {
             var that = this;
-            if (confirm("確定刪除該筆資料?")) {
+            if (confirm(ResDeleteConfirmMsg)) {
                 $.ajax({
                     url: apiUrl + id,
                     type: 'DELETE',
                     success: function (data, textStatus, xhr) {
-                        alert("刪除成功");
+                        alert(ResDeleteSuccessMsg);
                         that.ShClassList.splice(index, 1);
                     }
                 });

@@ -17,11 +17,23 @@
         var baseInstance = axios.create({
             baseURL: window.location.origin
         });
+
+        var ResInformation = '@AllShowResource.Information';
+        var ResErrorMsg = '@AllShowResource.ErrorMsg';
+        var ResField_Require_InputMsg = '@AllShowResource.Field_Require_Input';
+        var ResDeleteConfirmMsg = '@AllShowResource.DeleteConfirmMsg';
+        var ResDeleteSuccessMsg = '@AllShowResource.DeleteSuccess';
+
+        var elemRequiredArr = [];
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     @Scripts.Render("~/bundles/SharedJS")
     <style>
         body {
             padding-top: 70px;
+        }
+        .txtRed {
+            color: red
         }
     </style>
 </head>
@@ -40,6 +52,9 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index","Home", new { Area = "" })">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home", new { Area = "Admin" })">Admin</a>
                     </li>
                 </ul>
             </div>

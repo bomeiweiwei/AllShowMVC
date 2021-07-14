@@ -1,11 +1,11 @@
-﻿@model AllShowMVC.Models.ViewModel.VW_Shop
+﻿@model VW_Shop
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<form method="post" action="" id="frmCall" enctype="multipart/form-data">
+<form method="post" action="@Url.HttpRouteUrl("DefaultApi", new { controller= "Shops" })" id="frmCall" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
 
     <div class="container">
@@ -14,13 +14,11 @@
             <div class="img-thumbnail clearfix col-md-6 col-12" style="padding:20px">
                 <h4 class="bg-primary rounded text-center text-white" style="padding:10px">商店新增</h4>
                 <div class="form-group">
-                    <label for="EmpNo">@Html.DisplayNameFor(model => model.EmpNo)</label>
-                    @*@Html.DropDownList("EmpNo", null, htmlAttributes: new { @class = "form-control" })*@
+                    <label for="EmpNo">@AllShowResource.EmpName</label>
                     @Html.DropDownList("EmpNo", (IEnumerable<SelectListItem>)Model.EmployeeDDL, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
-                    <label for="ShClassNo">@Html.DisplayNameFor(model => model.ShClassNo)</label>
-                    @*@Html.DropDownList("ShClassNo", null, htmlAttributes: new { @class = "form-control" })*@
+                    <label for="ShClassNo">@AllShowResource.ShClassName</label>
                     @Html.DropDownList("ShClassNo", (IEnumerable<SelectListItem>)Model.ShClassDDL, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
@@ -36,8 +34,8 @@
                         <img v-if="ShThePicImg" :src="ShThePicImg" width="300" />
                     </div>
                     <div class="custom-file">
-                        <input type="file" id="ShThePic" name="ShThePic" class="custom-file-label" v-on:change="handelFileUpload"/>
-                        <label for="ShThePic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShThePic)</label>
+                        <input type="file" id="File_ShThePic" name="File_ShThePic" class="custom-file-label" v-on:change="handelFileUpload" />
+                        <label for="File_ShThePic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShThePic)</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,8 +43,8 @@
                         <img v-if="ShLogoPicImg" :src="ShLogoPicImg" width="300" />
                     </div>
                     <div class="custom-file">
-                        <input type="file" id="ShLogoPic" name="ShLogoPic" class="custom-file-label" v-on:change="handelFileUpload2" />
-                        <label for="ShLogoPic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShLogoPic)</label>
+                        <input type="file" id="File_ShLogoPic" name="File_ShLogoPic" class="custom-file-label" v-on:change="handelFileUpload2" />
+                        <label for="File_ShLogoPic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShLogoPic)</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -84,7 +82,7 @@
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="ShPopShop" name="ShPopShop" />
-                        <label for="ShPopShop" class="custom-control-label">熱門商店</label>
+                        <label for="ShPopShop" class="custom-control-label">@Html.DisplayNameFor(model => model.ShPopShop)</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -102,7 +100,7 @@
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="ShPwdState" name="ShPwdState" />
-                        <label for="ShPwdState" class="custom-control-label">密碼鎖定</label>
+                        <label for="ShPwdState" class="custom-control-label">@Html.DisplayNameFor(model => model.ShPwdState)</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -116,7 +114,7 @@
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="ShCheckState" name="ShCheckState" />
-                        <label for="ShCheckState" class="custom-control-label">商店啟用</label>
+                        <label for="ShCheckState" class="custom-control-label">@Html.DisplayNameFor(model => model.ShCheckState)</label>
                     </div>
                 </div>
 
@@ -125,7 +123,7 @@
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="ShAdState" name="ShAdState" />
-                        <label for="ShAdState" class="custom-control-label">廣告啟用</label>
+                        <label for="ShAdState" class="custom-control-label">@Html.DisplayNameFor(model => model.ShAdState)</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -137,25 +135,59 @@
                         <img v-if="ShAdPicImg" :src="ShAdPicImg" width="300" />
                     </div>
                     <div class="custom-file">
-                        <input type="file" id="ShAdPic" name="ShAdPic" class="custom-file-label" v-on:change="handelFileUpload3"/>
-                        <label for="ShAdPic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShAdPic)</label>
+                        <input type="file" id="File_ShAdPic" name="File_ShAdPic" class="custom-file-label" v-on:change="handelFileUpload3" />
+                        <label for="File_ShAdPic" class="custom-file-label">@Html.DisplayNameFor(model => model.ShAdPic)</label>
                     </div>
                 </div>
 
                 <p>
                     @*<input type="submit" value="上架" class="btn btn-success" />*@
+                    <input type="button" value="新增商店" class="btn btn-primary" id="btn_Submit" />
                 </p>
             </div>
         </div>
     </div>
-
 </form>
 
 <div>
     @Html.ActionLink("回到列表", "Index", null, new { Area = "Admin", @class = "btn btn-info" })
 </div>
-<script>
-    var url = '@Url.Action("Index", "Shops", new { Area = "Admin" })';
-    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "Shops" })/';
-</script>
-<script src="~/scripts/Admin/Shops/Create.js"></script>
+
+@section scripts{
+    <script>
+            var url = '@Url.Action("Index", "Shops", new { Area = "Admin" })';
+            var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "Shops" })/';
+
+            $(document).ready(function () {
+                $("#btn_Submit").click(function () {
+                    var file_data1 = $('#File_ShThePic').prop('files')[0];   //取得上傳檔案屬性
+                    var file_data2 = $('#File_ShLogoPic').prop('files')[0];   //取得上傳檔案屬性
+                    var file_data3 = $('#File_ShAdPic').prop('files')[0];   //取得上傳檔案屬性
+                    var form_data = new FormData();  //建構new FormData()
+                    form_data.append('file', file_data1);  //吧物件加到file後面
+                    form_data.append('file', file_data2);  //吧物件加到file後面
+                    form_data.append('file', file_data3);  //吧物件加到file後面
+
+                    var obj = $("#frmCall").serializeObject();
+                    $.each(obj, function (key, value) {
+                        form_data.append(key, obj[key]);
+                    });
+                    $.ajax({
+                        url: apiUrl,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,     //data只能指定單一物件
+                        type: 'post',
+                        success: function (data) {
+                            //$('#ajsxboxdhow').html(data);
+                        }
+                    });
+
+                    //$("#frmCall").submit();
+                    //BaseFormSubmit("frmCall", 'POST', apiUrl, url);//no file
+                });
+            });
+    </script>
+    <script src="~/scripts/Admin/Shops/Create.js"></script>
+}

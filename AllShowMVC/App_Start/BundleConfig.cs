@@ -21,7 +21,9 @@ namespace AllShowMVC
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/node_modules/bootstrap/dist/js/bootstrap.js"));
+                      "~/Scripts/node_modules/bootstrap/dist/js/bootstrap.js",
+                      "~/Scripts/Bootstrap4_Dialog/js/bootstrap-dialog.js"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/vue").Include(
                       "~/Scripts/node_modules/vue/dist/vue.js",
@@ -32,6 +34,7 @@ namespace AllShowMVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Scripts/node_modules/bootstrap/dist/css/bootstrap.css",
+                      "~/Content/Bootstrap4_Dialog/bootstrap-dialog.css",
                       "~/Scripts/node_modules/bootstrap-vue/dist/bootstrap-vue.min.css",
                       "~/Content/site.css"));
 
@@ -40,6 +43,8 @@ namespace AllShowMVC
             //   "~/Scripts/node_modules/bootstrap4-datetimepicker/build/js/bootstrap-datetimepicker.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/SharedJS").Include(
                "~/Scripts/Custom/SharedScript.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/moment").Include(
+            //   "~/Scripts/node_modules/moment/dist/moment.js"));
         }
     }
 }

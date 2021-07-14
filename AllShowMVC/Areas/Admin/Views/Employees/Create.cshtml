@@ -1,20 +1,14 @@
-﻿@model AllShowMVC.Models.ViewModel.VW_Employee
+﻿@model VW_Employee
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<style>
-    .txtRed {
-        color:red
-    }
-</style>
-
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmCall" })) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmCall" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>新增員工</h4>
         <hr />
@@ -23,8 +17,7 @@
             @Html.LabelFor(model => model.EmpName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EmpName, new { htmlAttributes = new { @class = "form-control" } })
-                @*@Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="EmpName" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -32,8 +25,7 @@
             @Html.LabelFor(model => model.EmpPwd, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.PasswordFor(model => model.EmpPwd, new { @class = "form-control" })
-                @*@Html.ValidationMessageFor(model => model.EmpPwd, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="EmpPwd" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.EmpPwd, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -41,8 +33,7 @@
             @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                @*@Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -50,8 +41,7 @@
             @Html.LabelFor(model => model.EmpEmail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EmpEmail, new { htmlAttributes = new { @class = "form-control" } })
-                @*@Html.ValidationMessageFor(model => model.EmpEmail, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="EmpEmail" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.EmpEmail, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -71,8 +61,7 @@
                     </label>
                 </div>
                 @*@Html.EditorFor(model => model.EmpSex, new { htmlAttributes = new { @class = "form-control" } })*@
-                @*@Html.ValidationMessageFor(model => model.EmpSex, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="EmpSex" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.EmpSex, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -81,8 +70,7 @@
             <div class="col-md-10">
                 @Html.Editor("EmpBirth", "DateTimeTemp", new { htmlAttributes = new { @class = "form-control" } })
                 @*@Html.EditorFor(model => model.EmpBirth, new { htmlAttributes = new { @class = "form-control" } })*@
-                @*@Html.ValidationMessageFor(model => model.EmpBirth, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="EmpBirth" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.EmpBirth, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -90,8 +78,7 @@
             @Html.LabelFor(model => model.EmpTel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EmpTel, new { htmlAttributes = new { @class = "form-control" } })
-                @*@Html.ValidationMessageFor(model => model.EmpTel, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="EmpTel" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.EmpTel, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -100,8 +87,7 @@
             <div class="col-md-10">
                 @Html.Editor("HireDate", "DateTimeTemp", new { htmlAttributes = new { @class = "form-control" } })
                 @*@Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control" } })*@
-                @*@Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="HireDate" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -109,8 +95,7 @@
             @Html.LabelFor(model => model.LeaveDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.LeaveDate, new { type = "date" })
-                @*@Html.ValidationMessageFor(model => model.LeaveDate, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="LeaveDate" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.LeaveDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -122,14 +107,13 @@
                     <label for="EmpAccountState" class="custom-control-label">啟用</label>
                 </div>
                 @*@Html.EditorFor(model => model.EmpAccountState, new { htmlAttributes = new { @class = "form-control" } })*@
-                @*@Html.ValidationMessageFor(model => model.EmpAccountState, "", new { @class = "text-danger" })*@
-                <span class="field-validation-valid" data-valmsg-for="EmpAccountState" data-valmsg-replace="true"></span>
+                @Html.ValidationMessageFor(model => model.EmpAccountState, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="新增員工" class="btn btn-primary" id="btn_Submit"/>
+                <input type="button" value="新增員工" class="btn btn-primary" id="btn_Submit" />
             </div>
         </div>
     </div>
@@ -138,39 +122,11 @@
 <div>
     @Html.ActionLink("回到列表", "Index", null, new { Area = "Admin", @class = "btn btn-info" })
 </div>
-<script>
-    $(document).ready(function () {
-        $("#btn_Submit").click(function () {
-            var obj = $("#frmCall").serializeObject();
 
-            var myForm = $("#frmCall");
-            var validator = myForm.validate();
-            $.ajax({
-                url: '@Url.HttpRouteUrl("DefaultApi", new { controller= "Employees" })',
-                type: 'POST',
-                data: obj,
-                error: function (xhr, textStatus, errorThrown) {
-                    var jsonResponse = JSON.parse(xhr.responseText);
-                    var result = $.parseJSON('[' + jsonResponse.Message + ']');
-                    for (var i = 0; i < result[0].length; i++) {
-                        //console.log(result[0][i].ValidateFiled);
-                        //console.log(result[0][i].ValidateMessage);
-                        $('span[data-valmsg-for="' + result[0][i].ValidateFiled + '"]').text(result[0][i].ValidateMessage);
-                        $('span[data-valmsg-for="' + result[0][i].ValidateFiled + '"]').removeClass().addClass("field-validation-error").addClass("txtRed");
-                        $('span[data-valmsg-for="' + result[0][i].ValidateFiled + '"]').show();
-                    }                    
-                },
-                success: function (data, textStatus, xhr) {
-                    //console.log(xhr.status);
-                },
-                complete: function (xhr, textStatus) {
-                    //console.log(xhr.status);
-                    if (xhr.status == 201) {
-                        location.href = '@Url.Action("Index", "Employees", new { Area = "Admin" })';
-                    }
-                }
-            });
-        });
-    });
-</script>
-<script src="~/scripts/Admin/Employees/Create.js"></script>
+@section scripts{
+    <script>
+        var url = '@Url.Action("Index", "Employees", new { Area = "Admin" })';
+        var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "Employees" })/';
+    </script>
+    <script src="~/scripts/Admin/Employees/Create.js"></script>
+}

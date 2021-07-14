@@ -61,6 +61,141 @@ namespace AllShowMVC.Resource.App_GlobalResources {
         }
         
         /// <summary>
+        ///   查詢類似 權限名稱 的當地語系化字串。
+        /// </summary>
+        public static string AuthorityName {
+            get {
+                return ResourceManager.GetString("AuthorityName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 密碼確認 的當地語系化字串。
+        /// </summary>
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 密碼確認輸入必須跟密碼一樣 的當地語系化字串。
+        /// </summary>
+        public static string ConfirmPasswordMsg {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 資料處理錯誤，請聯絡系統管理員 的當地語系化字串。
+        /// </summary>
+        public static string DataProcessError {
+            get {
+                return ResourceManager.GetString("DataProcessError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 確定刪除該筆資料? 的當地語系化字串。
+        /// </summary>
+        public static string DeleteConfirmMsg {
+            get {
+                return ResourceManager.GetString("DeleteConfirmMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 刪除成功 的當地語系化字串。
+        /// </summary>
+        public static string DeleteSuccess {
+            get {
+                return ResourceManager.GetString("DeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 員工帳號 的當地語系化字串。
+        /// </summary>
+        public static string EmpAccount {
+            get {
+                return ResourceManager.GetString("EmpAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 員工狀態 的當地語系化字串。
+        /// </summary>
+        public static string EmpAccountState {
+            get {
+                return ResourceManager.GetString("EmpAccountState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 員工生日 的當地語系化字串。
+        /// </summary>
+        public static string EmpBirth {
+            get {
+                return ResourceManager.GetString("EmpBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 員工信箱 的當地語系化字串。
+        /// </summary>
+        public static string EmpEmail {
+            get {
+                return ResourceManager.GetString("EmpEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 員工姓名 的當地語系化字串。
+        /// </summary>
+        public static string EmpName {
+            get {
+                return ResourceManager.GetString("EmpName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 員工密碼 的當地語系化字串。
+        /// </summary>
+        public static string EmpPwd {
+            get {
+                return ResourceManager.GetString("EmpPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 員工性別 的當地語系化字串。
+        /// </summary>
+        public static string EmpSex {
+            get {
+                return ResourceManager.GetString("EmpSex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 員工電話 的當地語系化字串。
+        /// </summary>
+        public static string EmpTel {
+            get {
+                return ResourceManager.GetString("EmpTel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 發生錯誤，請聯絡系統管理員 的當地語系化字串。
+        /// </summary>
+        public static string ErrorMsg {
+            get {
+                return ResourceManager.GetString("ErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 {0}不能輸入大於{1}字元 的當地語系化字串。
         /// </summary>
         public static string Field_MaxLength {
@@ -70,11 +205,47 @@ namespace AllShowMVC.Resource.App_GlobalResources {
         }
         
         /// <summary>
+        ///   查詢類似 此欄位必填 的當地語系化字串。
+        /// </summary>
+        public static string Field_Require_Input {
+            get {
+                return ResourceManager.GetString("Field_Require_Input", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 請輸入{0} 的當地語系化字串。
         /// </summary>
         public static string Field_Required {
             get {
                 return ResourceManager.GetString("Field_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 錄取日期 的當地語系化字串。
+        /// </summary>
+        public static string HireDate {
+            get {
+                return ResourceManager.GetString("HireDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 訊息 的當地語系化字串。
+        /// </summary>
+        public static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 離職日期 的當地語系化字串。
+        /// </summary>
+        public static string LeaveDate {
+            get {
+                return ResourceManager.GetString("LeaveDate", resourceCulture);
             }
         }
         
@@ -93,6 +264,204 @@ namespace AllShowMVC.Resource.App_GlobalResources {
         public static string MemName {
             get {
                 return ResourceManager.GetString("MemName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 關於 的當地語系化字串。
+        /// </summary>
+        public static string ShAbout {
+            get {
+                return ResourceManager.GetString("ShAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商帳號 的當地語系化字串。
+        /// </summary>
+        public static string ShAccount {
+            get {
+                return ResourceManager.GetString("ShAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 公司地址 的當地語系化字串。
+        /// </summary>
+        public static string ShAddress {
+            get {
+                return ResourceManager.GetString("ShAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店廣告圖片 的當地語系化字串。
+        /// </summary>
+        public static string ShAdPic {
+            get {
+                return ResourceManager.GetString("ShAdPic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廣告啟用 的當地語系化字串。
+        /// </summary>
+        public static string ShAdState {
+            get {
+                return ResourceManager.GetString("ShAdState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店廣告標題 的當地語系化字串。
+        /// </summary>
+        public static string ShAdTitle {
+            get {
+                return ResourceManager.GetString("ShAdTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 負責人 的當地語系化字串。
+        /// </summary>
+        public static string ShBoss {
+            get {
+                return ResourceManager.GetString("ShBoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店驗證日期 的當地語系化字串。
+        /// </summary>
+        public static string ShCheckDate {
+            get {
+                return ResourceManager.GetString("ShCheckDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店啟用 的當地語系化字串。
+        /// </summary>
+        public static string ShCheckState {
+            get {
+                return ResourceManager.GetString("ShCheckState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店類別名稱 的當地語系化字串。
+        /// </summary>
+        public static string ShClassName {
+            get {
+                return ResourceManager.GetString("ShClassName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 聯絡人 的當地語系化字串。
+        /// </summary>
+        public static string ShContact {
+            get {
+                return ResourceManager.GetString("ShContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 聯絡信箱 的當地語系化字串。
+        /// </summary>
+        public static string ShEmail {
+            get {
+                return ResourceManager.GetString("ShEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店結束時間 的當地語系化字串。
+        /// </summary>
+        public static string ShEndDate {
+            get {
+                return ResourceManager.GetString("ShEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Logo圖片 的當地語系化字串。
+        /// </summary>
+        public static string ShLogoPic {
+            get {
+                return ResourceManager.GetString("ShLogoPic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店名稱 的當地語系化字串。
+        /// </summary>
+        public static string ShName {
+            get {
+                return ResourceManager.GetString("ShName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 熱門商店 的當地語系化字串。
+        /// </summary>
+        public static string ShPopShop {
+            get {
+                return ResourceManager.GetString("ShPopShop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商密碼 的當地語系化字串。
+        /// </summary>
+        public static string ShPwd {
+            get {
+                return ResourceManager.GetString("ShPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 密碼鎖定 的當地語系化字串。
+        /// </summary>
+        public static string ShPwdState {
+            get {
+                return ResourceManager.GetString("ShPwdState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店開始時間 的當地語系化字串。
+        /// </summary>
+        public static string ShStartDate {
+            get {
+                return ResourceManager.GetString("ShStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 連絡電話 的當地語系化字串。
+        /// </summary>
+        public static string ShTel {
+            get {
+                return ResourceManager.GetString("ShTel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店圖片 的當地語系化字串。
+        /// </summary>
+        public static string ShThePic {
+            get {
+                return ResourceManager.GetString("ShThePic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商店網址 的當地語系化字串。
+        /// </summary>
+        public static string ShUrl {
+            get {
+                return ResourceManager.GetString("ShUrl", resourceCulture);
             }
         }
     }

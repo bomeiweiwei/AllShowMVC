@@ -117,16 +117,139 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AuthorityName" xml:space="preserve">
+    <value>權限名稱</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>密碼確認</value>
+  </data>
+  <data name="ConfirmPasswordMsg" xml:space="preserve">
+    <value>密碼確認輸入必須跟密碼一樣</value>
+  </data>
+  <data name="DataProcessError" xml:space="preserve">
+    <value>資料處理錯誤，請聯絡系統管理員</value>
+  </data>
+  <data name="DeleteConfirmMsg" xml:space="preserve">
+    <value>確定刪除該筆資料?</value>
+  </data>
+  <data name="DeleteSuccess" xml:space="preserve">
+    <value>刪除成功</value>
+  </data>
+  <data name="EmpAccount" xml:space="preserve">
+    <value>員工帳號</value>
+  </data>
+  <data name="EmpAccountState" xml:space="preserve">
+    <value>員工狀態</value>
+  </data>
+  <data name="EmpBirth" xml:space="preserve">
+    <value>員工生日</value>
+  </data>
+  <data name="EmpEmail" xml:space="preserve">
+    <value>員工信箱</value>
+  </data>
+  <data name="EmpName" xml:space="preserve">
+    <value>員工姓名</value>
+  </data>
+  <data name="EmpPwd" xml:space="preserve">
+    <value>員工密碼</value>
+  </data>
+  <data name="EmpSex" xml:space="preserve">
+    <value>員工性別</value>
+  </data>
+  <data name="EmpTel" xml:space="preserve">
+    <value>員工電話</value>
+  </data>
+  <data name="ErrorMsg" xml:space="preserve">
+    <value>發生錯誤，請聯絡系統管理員</value>
+  </data>
   <data name="Field_MaxLength" xml:space="preserve">
     <value>{0}不能輸入大於{1}字元</value>
   </data>
   <data name="Field_Required" xml:space="preserve">
     <value>請輸入{0}</value>
   </data>
+  <data name="Field_Require_Input" xml:space="preserve">
+    <value>此欄位必填</value>
+  </data>
+  <data name="HireDate" xml:space="preserve">
+    <value>錄取日期</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>訊息</value>
+  </data>
+  <data name="LeaveDate" xml:space="preserve">
+    <value>離職日期</value>
+  </data>
   <data name="MemEmail" xml:space="preserve">
     <value>會員信箱</value>
   </data>
   <data name="MemName" xml:space="preserve">
     <value>會員姓名</value>
+  </data>
+  <data name="ShAbout" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="ShAccount" xml:space="preserve">
+    <value>廠商帳號</value>
+  </data>
+  <data name="ShAddress" xml:space="preserve">
+    <value>公司地址</value>
+  </data>
+  <data name="ShAdPic" xml:space="preserve">
+    <value>商店廣告圖片</value>
+  </data>
+  <data name="ShAdState" xml:space="preserve">
+    <value>廣告啟用</value>
+  </data>
+  <data name="ShAdTitle" xml:space="preserve">
+    <value>商店廣告標題</value>
+  </data>
+  <data name="ShBoss" xml:space="preserve">
+    <value>負責人</value>
+  </data>
+  <data name="ShCheckDate" xml:space="preserve">
+    <value>商店驗證日期</value>
+  </data>
+  <data name="ShCheckState" xml:space="preserve">
+    <value>商店啟用</value>
+  </data>
+  <data name="ShClassName" xml:space="preserve">
+    <value>商店類別名稱</value>
+  </data>
+  <data name="ShContact" xml:space="preserve">
+    <value>聯絡人</value>
+  </data>
+  <data name="ShEmail" xml:space="preserve">
+    <value>聯絡信箱</value>
+  </data>
+  <data name="ShEndDate" xml:space="preserve">
+    <value>商店結束時間</value>
+  </data>
+  <data name="ShLogoPic" xml:space="preserve">
+    <value>Logo圖片</value>
+  </data>
+  <data name="ShName" xml:space="preserve">
+    <value>商店名稱</value>
+  </data>
+  <data name="ShPopShop" xml:space="preserve">
+    <value>熱門商店</value>
+  </data>
+  <data name="ShPwd" xml:space="preserve">
+    <value>廠商密碼</value>
+  </data>
+  <data name="ShPwdState" xml:space="preserve">
+    <value>密碼鎖定</value>
+  </data>
+  <data name="ShStartDate" xml:space="preserve">
+    <value>商店開始時間</value>
+  </data>
+  <data name="ShTel" xml:space="preserve">
+    <value>連絡電話</value>
+  </data>
+  <data name="ShThePic" xml:space="preserve">
+    <value>商店圖片</value>
+  </data>
+  <data name="ShUrl" xml:space="preserve">
+    <value>商店網址</value>
   </data>
 </root>

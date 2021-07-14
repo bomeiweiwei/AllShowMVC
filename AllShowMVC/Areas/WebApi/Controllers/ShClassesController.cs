@@ -9,9 +9,13 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Mvc;
+using AllShowMVC.App_Class.Base;
 using AllShowMVC.Infrastructure;
 using AllShowMVC.Models;
+using AllShowMVC.Models.Validate;
+using AllShowMVC.Resource.App_GlobalResources;
 using AllShowMVC.Service;
+using Newtonsoft.Json;
 
 namespace AllShowMVC.Areas.WebApi.Controllers
 {
@@ -54,61 +58,124 @@ namespace AllShowMVC.Areas.WebApi.Controllers
         [System.Web.Http.HttpPut]
         [ValidateAntiForgeryToken]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutShClass(int id, ShClass shClass)
+        public IHttpActionResult PutShClass(int id, ShClass model)
         {
-            ShClass model = EncodeModel(shClass);
+            ExecuteResult executeResult = new ExecuteResult();
+
+            string objDeclaredName = nameof(model);
+            ShClass _model = EncodeModel(model);
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                var errorList = new List<ValidateObj>();
+                foreach (var modelStateKey in ModelState.Keys)
+                {
+                    var value = ModelState[modelStateKey];
+                    string msg = "";
+                    foreach (var error in value.Errors)
+                    {
+                        msg += error.ErrorMessage + " ";
+                    }
+                    string ignore = $"{objDeclaredName}.";
+                    string column = modelStateKey.Replace(ignore, "");
+                    errorList.Add(
+                        new ValidateObj
+                        {
+                            ValidateFiled = column,
+                            ValidateMessage = msg
+                        });
+                }
+
+                //var ModelStateErrors = ModelState.Where(x => x.Value.Errors.Count > 0)
+                //    .ToDictionary(k => k.Key, k => k.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+                string message = JsonConvert.SerializeObject(errorList);
+
+                executeResult.Code = ((int)Code.ModelValid).ToString();
+                executeResult.Message = message;
+                string result = JsonConvert.SerializeObject(executeResult);
+                return BadRequest(result);
             }
 
-            if (id != shClass.ShClassNo)
+            if (id != _model.ShClassNo)
             {
                 return BadRequest();
             }
 
             try
             {
-                int result = service.Update(model);
+                int result = service.Update(_model);
                 if (result != 1)
-                    return BadRequest("更新失敗");
+                    return BadRequest();
             }
             catch (DbUpdateConcurrencyException ex)
             {
                 logger.Error(ex.Message);
-                return BadRequest("更新失敗");
+                return BadRequest();
             }
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
-                return BadRequest("更新失敗");
+                return BadRequest();
             }
 
-            return Content(HttpStatusCode.OK, model);
+            return Content(HttpStatusCode.OK, _model);
         }
 
         // POST: api/ShClasses
         [System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
         [ResponseType(typeof(ShClass))]
-        public IHttpActionResult PostShClass(ShClass shClass)
+        public IHttpActionResult PostShClass(ShClass model)
         {
-            ShClass model = EncodeModel(shClass);
+            ExecuteResult executeResult = new ExecuteResult();
 
-            ModelState.Remove("shClass.ShClassNo");
+            string objDeclaredName = nameof(model);
+            ShClass _model = EncodeModel(model);
+
+            ModelState.Remove($"{objDeclaredName}.ShClassNo");
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                var errorList = new List<ValidateObj>();
+                foreach (var modelStateKey in ModelState.Keys)
+                {
+                    var value = ModelState[modelStateKey];
+                    string msg = "";
+                    foreach (var error in value.Errors)
+                    {
+                        msg += error.ErrorMessage + " ";
+                    }
+                    string ignore = $"{objDeclaredName}.";
+                    string column = modelStateKey.Replace(ignore, "");
+                    errorList.Add(
+                        new ValidateObj
+                        {
+                            ValidateFiled = column,
+                            ValidateMessage = msg
+                        });
+                }
+
+                //var ModelStateErrors = ModelState.Where(x => x.Value.Errors.Count > 0)
+                //    .ToDictionary(k => k.Key, k => k.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+                string message = JsonConvert.SerializeObject(errorList);
+
+                executeResult.Code = ((int)Code.ModelValid).ToString();
+                executeResult.Message = message;
+                string result = JsonConvert.SerializeObject(executeResult);
+                return BadRequest(result);
             }
 
-            int result = service.Create(model);
-            if (result != 1)
+            try
             {
-                return BadRequest("新增失敗");
+                int result = service.Create(_model);
+                if (result == 1)
+                    return CreatedAtRoute("DefaultApi", new { id = _model.ShClassNo }, _model);
+                else
+                    return BadRequest(AllShowResource.DataProcessError);
             }
-
-            return CreatedAtRoute("DefaultApi", new { id = model.ShClassNo }, model);
+            catch (Exception)
+            {
+                return BadRequest(AllShowResource.DataProcessError);
+            }
         }
 
         // DELETE: api/ShClasses/5
@@ -125,7 +192,7 @@ namespace AllShowMVC.Areas.WebApi.Controllers
             int result = service.Delete(shClass);
             if (result != 1)
             {
-                return BadRequest("刪除失敗");
+                return BadRequest();
             }
 
             return Ok(shClass);

@@ -204,6 +204,7 @@
       <DependentUpon>AllShowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Validate\ValidateObj.cs" />
+    <Compile Include="ViewModel\VW_Authority.cs" />
     <Compile Include="ViewModel\VW_Employee.cs" />
     <Compile Include="ViewModel\VW_Shop.cs" />
   </ItemGroup>

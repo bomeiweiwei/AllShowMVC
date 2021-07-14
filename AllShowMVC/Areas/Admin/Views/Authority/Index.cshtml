@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Authority>
+
+@{
+    ViewBag.Title = "權限列表";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>權限列表</h2>
+
+<p>
+    @Html.ActionLink("新增權限", "Create", "Authority", null, new { Area = "Admin", @class = "btn btn-primary" })
+</p>
+<div id="app">
+    <table class="table table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Employee.EmpName)</th>
+                <th>@Html.DisplayNameFor(model => model.AuthorityFunction.AuthorityName)</th>
+                <th>@Html.DisplayNameFor(model => model.Note)</th>
+                <th>功能</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in AuthorityList">
+                <td class="table-active">{{item.EmpName}}</td>
+                <td>{{item.AuthorityName}}</td>
+                <td>{{item.Note}}</td>
+                <td>
+                    <button type="button" v-on:click="EditAuth(item.EmpNo,item.AuthorityNo)" class="btn btn-warning">編輯</button>
+                    <button type="button" v-on:click="AuthDetail(item.EmpNo,item.AuthorityNo)" class="btn btn-info">詳細</button>
+                    <button type="button" v-on:click="DeleteAuth(index,item.EmpNo,item.AuthorityNo)" class="btn btn-danger">刪除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    var url = '@Url.Action(null, "Authority", new { Area = "Admin" })';
+    var apiUrl = '@Url.HttpRouteUrl("DefaultApi", new { controller= "Authority" })';
+</script>
+<script src="~/scripts/Admin/Authority/Index.js"></script>

@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Mvc;
+using AllShowMVC.App_Class.Base;
+using AllShowMVC.Common;
 using AllShowMVC.Infrastructure;
 using AllShowMVC.Models;
 using AllShowMVC.Models.IdentityModel;
@@ -95,22 +97,45 @@ namespace AllShowMVC.Areas.WebApi.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        */
         // POST: api/Shops
+        [System.Web.Http.HttpPost]
+        [ValidateAntiForgeryToken]
         [ResponseType(typeof(Shop))]
-        public IHttpActionResult PostShop(Shop shop)
+        public IHttpActionResult PostShop(/*Shop model*/)
         {
+            string ShName = BaseUtility.GetRequest("ShName", false);
+
+            string test = Security.EncryptDES(ShName);
+            string test2 = Security.DecryptDES(test);
+
+            //取得當前的 request 物件
+            var httpRequest = HttpContext.Current.Request;
+            //request 如有夾帶檔案
+            if (httpRequest.Files.Count > 0)
+            {
+                //逐一取得檔案名稱
+                foreach (string fileName in httpRequest.Files.Keys)
+                {
+                    //以檔案名稱從 request 的 Files 集合取得檔案內容
+                    var file = httpRequest.Files[fileName];
+                    //其他檔案處理
+                }
+
+                //return Request.CreateResponse(HttpStatusCode.OK);
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Shop.Add(shop);
-            db.SaveChanges();
+            //db.Shop.Add(shop);
+            //db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = shop.ShNo }, shop);
+            //return CreatedAtRoute("DefaultApi", new { id = model.ShNo }, model);
+            return Ok();
         }
-
+        /*
         // DELETE: api/Shops/5
         [ResponseType(typeof(Shop))]
         public IHttpActionResult DeleteShop(int id)

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Mvc;
+using AllShowMVC.App_Class.Base;
 using AllShowMVC.Infrastructure;
 using AllShowMVC.Models;
 using AllShowMVC.Models.IdentityModel;
@@ -64,88 +65,21 @@ namespace AllShowMVC.Areas.WebApi.Controllers
         [System.Web.Http.HttpPut]
         [ValidateAntiForgeryToken]
         [ResponseType(typeof(void))]
-        public async System.Threading.Tasks.Task<IHttpActionResult> PutEmployee(int id, VW_Employee employee)
+        public async System.Threading.Tasks.Task<IHttpActionResult> PutEmployee(int id, VW_Employee model)
         {
-            VW_Employee model = EncodeModel(employee);
+            ExecuteResult executeResult = new ExecuteResult();
+
+            string objDeclaredName = nameof(model);
+            VW_Employee _model = EncodeModel(model);
 
             //不修改密碼
-            if (!(employee.ChangePwd.HasValue && employee.ChangePwd.Value))
+            if (!(_model.ChangePwd.HasValue && _model.ChangePwd.Value))
             {
-                ModelState.Remove("employee.EmpPwd");
-                ModelState.Remove("employee.ConfirmPassword");
+                ModelState.Remove($"{objDeclaredName}.EmpPwd");
+                ModelState.Remove($"{objDeclaredName}.ConfirmPassword");
             }
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
-            }
-
-            if (id != employee.EmpNo)
-            {
-                return BadRequest();
-            }
-
-            if (!(employee.ChangePwd.HasValue && employee.ChangePwd.Value))
-            {
-                Employee tmpEmp = service.FindOne(m => m.EmpNo == employee.EmpNo);
-                if (tmpEmp == null)
-                {
-                    return NotFound();
-                }
-                model.EmpPwd = tmpEmp.EmpPwd;
-            }
-            else
-            {
-                string hashPwd = UserManager.PasswordHasher.HashPassword(model.EmpPwd);
-                model.EmpPwd = hashPwd;
-            }
-            var user = await UserManager.FindByEmailAsync(model.EmpEmail);
-            user.UserName = model.EmpName;
-            user.PhoneNumber = model.EmpTel;
-            user.PasswordHash = model.EmpPwd;
-            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-            {
-                try
-                {
-                    int success = service.EditEmployee(model);
-                    var result = await UserManager.UpdateAsync(user);
-                    if (result.Succeeded)
-                    {
-                        scope.Complete();
-                    }
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    logger.Error(GetEntityErrorMsg(ex));
-                    return BadRequest("更新失敗");
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex.Message);
-                    return BadRequest("更新失敗");
-                }
-                finally
-                {
-                    scope.Dispose();
-                }
-            }
-
-            return Content(HttpStatusCode.OK, model);
-        }
-
-        // POST: api/Employees
-        [System.Web.Http.HttpPost]
-        [ValidateAntiForgeryToken]
-        [ResponseType(typeof(VW_Employee))]
-        public async System.Threading.Tasks.Task<IHttpActionResult> PostEmployee(VW_Employee employee)
-        {
-            VW_Employee model = EncodeModel(employee);
-
-            ModelState.Remove("employee.EmpNo");
-            ModelState.Remove("employee.EmpAccount");
-
-            if (!ModelState.IsValid)
-            {
-                //var allErrors = ModelState.Values.SelectMany(v => v.Errors);
                 var errorList = new List<ValidateObj>();
                 foreach (var modelStateKey in ModelState.Keys)
                 {
@@ -155,34 +89,130 @@ namespace AllShowMVC.Areas.WebApi.Controllers
                     {
                         msg += error.ErrorMessage + " ";
                     }
-                    //ModelState.AddModelError(modelStateKey, msg);
+                    string ignore = objDeclaredName + ".";
+                    string column = modelStateKey.Replace(ignore, "");
                     errorList.Add(
                         new ValidateObj
                         {
-                            ValidateFiled = modelStateKey.Replace("employee.", ""),
+                            ValidateFiled = column,
                             ValidateMessage = msg
                         });
                 }
-                //foreach (var e in errorList)
-                //{
-                //    ModelState.AddModelError(e.ValidateFiled, e.ValidateMessage);
-                //}
-                var ModelStateErrors = ModelState.Where(x => x.Value.Errors.Count > 0)
-                    .ToDictionary(k => k.Key, k => k.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+
                 string message = JsonConvert.SerializeObject(errorList);
-                return BadRequest(message);
+
+                executeResult.Code = ((int)Code.ModelValid).ToString();
+                executeResult.Message = message;
+                string result = JsonConvert.SerializeObject(executeResult);
+                return BadRequest(result);
             }
 
-            string hashPwd = UserManager.PasswordHasher.HashPassword(model.EmpPwd);
+            if (id != _model.EmpNo)
+            {
+                return BadRequest();
+            }
 
-            model.EmpAccount = model.EmpEmail;
-            model.EmpPwd = hashPwd;
+            if (!(_model.ChangePwd.HasValue && _model.ChangePwd.Value))
+            {
+                Employee tmpEmp = service.FindOne(m => m.EmpNo == _model.EmpNo);
+                if (tmpEmp == null)
+                {
+                    return NotFound();
+                }
+                _model.EmpPwd = tmpEmp.EmpPwd;
+            }
+            else
+            {
+                string hashPwd = UserManager.PasswordHasher.HashPassword(_model.EmpPwd);
+                _model.EmpPwd = hashPwd;
+            }
+            var user = await UserManager.FindByEmailAsync(_model.EmpEmail);
+            user.UserName = _model.EmpName;
+            user.PhoneNumber = _model.EmpTel;
+            user.PasswordHash = _model.EmpPwd;
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                try
+                {
+                    int success = service.EditEmployee(_model);
+                    var result = await UserManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        scope.Complete();
+                    }
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    logger.Error(GetEntityErrorMsg(ex));
+                    return BadRequest();
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message);
+                    return BadRequest();
+                }
+                finally
+                {
+                    scope.Dispose();
+                }
+            }
+
+            return Content(HttpStatusCode.OK, _model);
+        }
+
+        // POST: api/Employees
+        [System.Web.Http.HttpPost]
+        [ValidateAntiForgeryToken]
+        [ResponseType(typeof(VW_Employee))]
+        public async System.Threading.Tasks.Task<IHttpActionResult> PostEmployee(VW_Employee model)
+        {
+            ExecuteResult executeResult = new ExecuteResult();
+
+            string objDeclaredName = nameof(model);
+            VW_Employee _model = EncodeModel(model);
+
+            ModelState.Remove($"{objDeclaredName}.EmpNo");
+            ModelState.Remove($"{objDeclaredName}.EmpAccount");
+
+            if (!ModelState.IsValid)
+            {
+                var errorList = new List<ValidateObj>();
+                foreach (var modelStateKey in ModelState.Keys)
+                {
+                    var value = ModelState[modelStateKey];
+                    string msg = "";
+                    foreach (var error in value.Errors)
+                    {
+                        msg += error.ErrorMessage + " ";
+                    }
+                    string ignore = $"{objDeclaredName}.";
+                    string column = modelStateKey.Replace(ignore, "");
+                    errorList.Add(
+                        new ValidateObj
+                        {
+                            ValidateFiled = column,
+                            ValidateMessage = msg
+                        });
+                }
+
+                string message = JsonConvert.SerializeObject(errorList);
+
+                executeResult.Code = ((int)Code.ModelValid).ToString();
+                executeResult.Message = message;
+                string result = JsonConvert.SerializeObject(executeResult);
+                return BadRequest(result);
+            }
+
+            string hashPwd = UserManager.PasswordHasher.HashPassword(_model.EmpPwd);
+
+            _model.EmpAccount = _model.EmpEmail;
+            _model.EmpPwd = hashPwd;
 
             var user = new CustomUser
             {
-                UserName = model.EmpName,
-                Email = model.EmpEmail,
-                PhoneNumber = model.EmpTel,
+                UserName = _model.EmpName,
+                Email = _model.EmpEmail,
+                PhoneNumber = _model.EmpTel,
                 PasswordHash = hashPwd,
                 SecurityStamp = Guid.NewGuid().ToString()
             };
@@ -190,7 +220,7 @@ namespace AllShowMVC.Areas.WebApi.Controllers
             {
                 try
                 {
-                    int success = service.CreateEmployee(model);
+                    int success = service.CreateEmployee(_model);
                     var result = await UserManager.CreateAsync(user);
                     if (result.Succeeded)
                     {
@@ -212,12 +242,12 @@ namespace AllShowMVC.Areas.WebApi.Controllers
                 catch (DbEntityValidationException ex)
                 {
                     logger.Error(GetEntityErrorMsg(ex));
-                    return BadRequest("新增失敗");
+                    return BadRequest();
                 }
                 catch (Exception ex)
                 {
                     logger.Error(ex.Message);
-                    return BadRequest("新增失敗");
+                    return BadRequest();
                 }
                 finally
                 {
@@ -225,7 +255,7 @@ namespace AllShowMVC.Areas.WebApi.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = model.EmpNo }, model);
+            return CreatedAtRoute("DefaultApi", new { id = _model.EmpNo }, _model);
         }
 
         // DELETE: api/Employees/5
@@ -233,6 +263,7 @@ namespace AllShowMVC.Areas.WebApi.Controllers
         [ResponseType(typeof(Employee))]
         public async System.Threading.Tasks.Task<IHttpActionResult> DeleteEmployee(int id)
         {
+            bool deleteSuccess = false;
             Employee employee = service.FindOne(m => m.EmpNo == id);
             if (employee == null)
             {
@@ -266,6 +297,7 @@ namespace AllShowMVC.Areas.WebApi.Controllers
                         await UserManager.DeleteAsync(user);
 
                         transaction.Commit();
+                        deleteSuccess = true;
                     }
                 }
                 catch (DbEntityValidationException ex)
@@ -278,7 +310,10 @@ namespace AllShowMVC.Areas.WebApi.Controllers
                     transaction.Rollback();
                 }
 
-                return Ok(employee);
+                if (deleteSuccess)
+                    return Ok(employee);
+                else
+                    return BadRequest();
             }
         }
     }

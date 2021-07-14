@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AllShowMVC.Controllers;
+using AllShowMVC.App_Class.Base;
 using AllShowMVC.Models;
 using AllShowMVC.Service;
 

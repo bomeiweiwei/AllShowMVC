@@ -23,8 +23,8 @@ namespace AllShowMVC.Models.ViewModel
         public new string EmpPwd { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("EmpPwd", ErrorMessage = "The password and confirmation password do not match.")]
+        [ResourceTool.LocalizedDisplayName("ConfirmPassword", typeof(AllShowResource))]
+        [Compare("EmpPwd", ErrorMessageResourceName = "ConfirmPasswordMsg", ErrorMessageResourceType = typeof(AllShowResource))]
         public string ConfirmPassword { get; set; }
 
         public bool? ChangePwd { get; set; }

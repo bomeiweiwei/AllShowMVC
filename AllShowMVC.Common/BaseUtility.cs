@@ -1,90 +1,17 @@
-﻿using AddIdentity;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
+﻿using Microsoft.Security.Application;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
-using System.Web.Http;
 
-namespace AllShowMVC.Areas.WebApi.Controllers
+namespace AllShowMVC.Common
 {
-    public class BaseApiController : ApiController
+    public class BaseUtility
     {
-        protected NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        public BaseApiController()
-        {
-        }
-
-        public BaseApiController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
-
-        public BaseApiController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-            RoleManager = roleManager;
-        }
-        
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-
-        public ApplicationSignInManager SignInManager
-        {
-            get => _signInManager ?? HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
-            private set => _signInManager = value;
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get => _userManager ?? HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            private set => _userManager = value;
-        }
-
-        private ApplicationRoleManager _roleManager;
-
-        public ApplicationRoleManager RoleManager
-        {
-            get
-            {
-                return _roleManager ?? HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-            }
-            private set
-            {
-                _roleManager = value;
-            }
-        }
-
-        protected IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.Current.GetOwinContext().Authentication;
-            }
-        }
-
-        protected void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
-        }
-
-        protected string GetEntityErrorMsg(DbEntityValidationException ex)
-        {
-            var entityError = ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.ErrorMessage);
-            var getFullMessage = string.Join("; ", entityError);
-            var exceptionMessage = string.Concat(ex.Message, "errors are: ", getFullMessage);
-            return exceptionMessage;
-        }
-
         /// <summary>
         /// 取得物件屬性值(Property Value)
         /// </summary>
@@ -158,6 +85,35 @@ namespace AllShowMVC.Areas.WebApi.Controllers
                 }
             }
             return Model;
+        }
+
+        public static string GetRequest(string strRequestName, bool blEncode = false)
+        {
+            string strRequestValue = "";
+
+            if (HttpContext.Current.Request[strRequestName] != null)
+            {
+                strRequestValue = HttpContext.Current.Request[strRequestName].ToString();
+
+                if (blEncode)
+                {
+                    try
+                    {
+                        strRequestValue = Security.DecryptDES(HttpContext.Current.Request[strRequestName].ToString());
+                    }
+                    catch
+                    {
+                        strRequestValue = "";
+                    }
+                }
+                strRequestValue = GetSafeHtmlFragment(strRequestValue);
+            }
+
+            return strRequestValue;
+        }
+        public static string GetSafeHtmlFragment(string strHtml)
+        {
+            return Sanitizer.GetSafeHtmlFragment(strHtml.Replace("javascript:", ""));
         }
     }
 }
